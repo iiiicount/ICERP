@@ -18,4 +18,7 @@ public class Hierarchy {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private Long comCode;
+    private String hierarchyName;
+
 }
