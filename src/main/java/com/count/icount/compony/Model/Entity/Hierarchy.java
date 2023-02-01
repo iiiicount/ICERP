@@ -1,23 +1,24 @@
-package com.count.icount.trade.company.Model.Entity;
+package com.count.icount.compony.Model.Entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
 @Getter
 @Setter
-@Builder
-public class Department {
+@AllArgsConstructor
+@NoArgsConstructor
+public class Hierarchy {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private Long comCode;
+    private String hierarchyName;
 
-    private String departmentName;
 }
