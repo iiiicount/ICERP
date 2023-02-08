@@ -10,6 +10,7 @@ services:
       MYSQL_USER: icountdev
       MYSQL_PASSWORD: 1q2w3e4r
       MYSQL_DATABASE: icount
+
     command:
       - --character-set-server=utf8mb4
       - --collation-server=utf8mb4_unicode_ci

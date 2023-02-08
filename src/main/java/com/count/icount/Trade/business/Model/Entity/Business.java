@@ -1,4 +1,4 @@
-package com.count.icount.trade.business.Model.Entity;
+package com.count.icount.Trade.business.Model.Entity;
 
 
 import jakarta.persistence.Entity;

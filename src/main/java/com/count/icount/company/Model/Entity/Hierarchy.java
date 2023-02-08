@@ -1,4 +1,4 @@
-package com.count.icount.compony.Model.Entity;
+package com.count.icount.company.Model.Entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,15 +14,11 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Company {
+public class Hierarchy {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private Long comCode;
-    private String businessNumber;
-    private String name;
-    private String address;
-    private String telephoneNum;
-    private String ceo;
-    private String businessType; // enum으로 가야할듯?
+    private String hierarchyName;
 
 }
