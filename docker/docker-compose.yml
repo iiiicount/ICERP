@@ -1,19 +1,21 @@
 version: '3'
 services:
-  mysql-traffic-bank:
+  mysql-icount:
     image: mysql:8.0
     container_name: mysql-icount
     ports:
       - "33306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: 1q2w3e4r
+      MYSQL_USER: icountdev
+      MYSQL_PASSWORD: 1q2w3e4r
+      MYSQL_DATABASE: icount
     command:
       - --character-set-server=utf8mb4
       - --collation-server=utf8mb4_unicode_ci
     volumes:
-      - traffic-bank-mysql-volume:/var/lib/mysql
+      - icount-mysql-volume:/var/lib/mysql
 
 volumes:
-  traffic-bank-mysql-volume:
+  icount-mysql-volume:
     driver: local
