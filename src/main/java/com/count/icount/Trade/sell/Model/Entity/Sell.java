@@ -1,24 +1,26 @@
-package com.count.icount.Trade.Sell.Model.Entity;
+package com.count.icount.Trade.sell.Model.Entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+
+import java.util.Date;
 
 @Entity
 @Getter
 @Setter
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class SellDetail {
+public class Sell {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String product;
-    private int quantity;
-    private String beego;
+    private Long businessId;
+    private String userName;
+    private String detailCode;
+
+    private Date date;
 }
