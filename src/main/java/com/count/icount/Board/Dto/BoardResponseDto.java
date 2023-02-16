@@ -2,17 +2,17 @@ package com.count.icount.Board.Dto;
 
 import com.count.icount.Board.Model.Entity.Board;
 import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 
 import java.time.LocalDateTime;
 
-@Getter
-@Setter
+@Data
 @ToString
-public class BoardDto {
-    private String id;
+@RequiredArgsConstructor
+public class BoardResponseDto {
+    private Long id;
     private String writer;
     private String title;
     private String content;
@@ -32,8 +32,8 @@ public class BoardDto {
     }
 
     @Builder
-    public BoardDto(String id, String writer, String title, String content,
-                    LocalDateTime createdDate, LocalDateTime modifiedDate) {
+    public BoardResponseDto(Long id, String writer, String title, String content,
+                            LocalDateTime createdDate, LocalDateTime modifiedDate) {
         this.id = id;
         this.writer = writer;
         this.title = title;
