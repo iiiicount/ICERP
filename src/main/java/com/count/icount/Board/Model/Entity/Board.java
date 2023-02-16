@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 @Getter
 @Entity
 public class Board {
-    private String id;
+    private Long id;
     private String writer;
     private String title;
     private String content;
@@ -17,7 +17,7 @@ public class Board {
     private LocalDateTime modifiedDate;
 
     @Builder
-    public Board(String id, String writer, String title, String content,
+    public Board(Long id, String writer, String title, String content,
                  LocalDateTime createdDate, LocalDateTime modifiedDate) {
         this.id = id;
         this.writer = writer;
