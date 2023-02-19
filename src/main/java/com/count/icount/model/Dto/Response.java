@@ -19,6 +19,13 @@ public class Response<T> {
         this.errorMessage = null;
     }
 
+    public Response(T data){
+        this.statusCode = HttpStatus.OK.getStatusCode();
+        this.httpMessage = HttpStatus.OK.getHttpMessage();
+        this.data = data;
+        this.errorMessage = null;
+    }
+
 
 
 }
