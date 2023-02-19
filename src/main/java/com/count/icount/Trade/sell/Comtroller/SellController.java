@@ -9,12 +9,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController // 컨트롤러라는 뜻
-@RequestMapping("sell") // url : boards/ 로 시작
+@RequestMapping("/sell") // url : boards/ 로 시작
 @RequiredArgsConstructor // 뭐더라?
 @Log4j2 // log 출력
 public class SellController {
-    private SellService sellService;
-    @PostMapping("")
+    private final SellService sellService;
+    @PostMapping
     public ResponseEntity<SellResponseDto> saveSell(@RequestBody SellRequestDto sellRequestDto)  {
         log.info("user : " + sellRequestDto.getUserName());
         return ResponseEntity.ok(sellService.save(sellRequestDto));
