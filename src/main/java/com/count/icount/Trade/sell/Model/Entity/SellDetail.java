@@ -1,4 +1,4 @@
-package com.count.icount.Trade.Purchase.Model.Entity;
+package com.count.icount.Trade.sell.Model.Entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,12 +14,11 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Purchase {
+public class SellDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long businessId;
-    private String userName;
-    private String detailCode;
-
+    private String product;
+    private int quantity;
+    private String beego;
 }

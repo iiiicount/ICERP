@@ -1,4 +1,4 @@
-package com.count.icount.Trade.Purchase.Model.Entity;
+package com.count.icount.Trade.purchase.Model.Entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
