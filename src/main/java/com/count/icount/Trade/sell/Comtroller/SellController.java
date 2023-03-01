@@ -20,8 +20,8 @@ public class SellController {
         return ResponseEntity.ok(sellService.save(sellRequestDto));
     }
 
-   /* @GetMapping("{/id}")
+    @GetMapping("{id}")
     public ResponseEntity<SellResponseDto> getSell(@PathVariable("id") Long id)  {
         return ResponseEntity.ok(sellService.get(id));
-    }*/
+    }
 }

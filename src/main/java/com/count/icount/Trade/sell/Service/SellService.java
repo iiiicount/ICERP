@@ -15,7 +15,7 @@ import java.util.Date;
 @RequiredArgsConstructor
 @Log4j2
 public class SellService {
-    SellRepository sellRepository;
+    private final SellRepository sellRepository;
     @Transactional
     public SellResponseDto save(SellRequestDto requestDto) {
         sellRepository.save(Sell.builder()
@@ -33,7 +33,7 @@ public class SellService {
                 .build();
     }
 
-   /* @Transactional
+    @Transactional
     public SellResponseDto get(Long id) {
         Sell sell = sellRepository.findById(id).orElse(null);
         return SellResponseDto.builder()
@@ -42,5 +42,5 @@ public class SellService {
                 .detailCode(sell.getDetailCode())
                 .businessId(sell.getBusinessId())
                 .build();
-    }*/
+    }
 }
