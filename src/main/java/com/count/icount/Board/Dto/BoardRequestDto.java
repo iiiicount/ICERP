@@ -1,14 +1,14 @@
 package com.count.icount.Board.Dto;
 
 import com.count.icount.Board.Model.Entity.Board;
-import lombok.Builder;
-import lombok.Data;
-import lombok.ToString;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
-@Data
+@Getter
+@Setter
 @ToString
+@Builder
 public class BoardRequestDto {
     private Long id;
     private String writer;
@@ -28,16 +28,4 @@ public class BoardRequestDto {
                 .build();
         return board;
     }
-
-    @Builder
-    public BoardRequestDto(Long id, String writer, String title, String content,
-                           LocalDateTime createdDate, LocalDateTime modifiedDate) {
-        this.id = id;
-        this.writer = writer;
-        this.title = title;
-        this.content = content;
-        this.createdDate = createdDate;
-        this.modifiedDate = modifiedDate;
-    }
-
 }

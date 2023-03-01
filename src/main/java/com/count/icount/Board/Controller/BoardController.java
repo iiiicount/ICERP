@@ -8,17 +8,24 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
-@RequestMapping("boards")
+@RequestMapping("board")
 @RequiredArgsConstructor
 @Log4j2
 public class BoardController {
-    private BoardService boardService;
+    private final BoardService boardService;
 
-    @GetMapping("/board")
-    public ResponseEntity<BoardResponseDto> getBoard (BoardRequestDto boardRequestDto) {
-        return ResponseEntity.ok(boardService.get(boardRequestDto));
+    @GetMapping("")
+    public ResponseEntity<List<BoardResponseDto>> getBoard () {
+        return ResponseEntity.ok(boardService.get());
     }
+
+//    @GetMapping("/boards")
+//    public ResponseEntity<BoardResponseDto> get Boards (BoardRequestDto boardRequestDto) {
+//        return ResponseEntity.ok(boardService.gets(boardRequestDto));
+//    }
 
 //    @PostMapping("")
 //    public ResponseEntity<BoardResponseDto> saveBoard(@RequestBody BoardRequestDto boardRequestDto)  {
