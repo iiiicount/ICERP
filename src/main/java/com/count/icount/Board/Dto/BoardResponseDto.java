@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 @Data
 @ToString
 @RequiredArgsConstructor
+@Builder
 public class BoardResponseDto {
     private Long id;
     private String writer;

@@ -10,6 +10,10 @@ import java.time.LocalDateTime;
 
 @Entity
 @Getter
+@Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Board {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,15 +23,4 @@ public class Board {
     private String content;
     private LocalDateTime createdDate;
     private LocalDateTime modifiedDate;
-
-    @Builder
-    public Board(Long id, String writer, String title, String content,
-                 LocalDateTime createdDate, LocalDateTime modifiedDate) {
-        this.id = id;
-        this.writer = writer;
-        this.title = title;
-        this.content = content;
-        this.createdDate = createdDate;
-        this.modifiedDate = modifiedDate;
-    }
 }
