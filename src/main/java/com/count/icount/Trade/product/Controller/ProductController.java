@@ -1,9 +1,9 @@
-package com.count.icount.trade.product.Controller;
+package com.count.icount.Trade.product.Controller;
 
 
 import com.count.icount.model.Dto.Response;
-import com.count.icount.trade.product.Model.Dto.ProductDto;
-import com.count.icount.trade.product.Service.ProductService;
+import com.count.icount.Trade.product.Model.Dto.ProductDto;
+import com.count.icount.Trade.product.Service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
