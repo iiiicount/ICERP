@@ -41,17 +41,48 @@ public class BoardService {
 
         return boardResponseDtos;
     }
-    /*
-        boardRepository.save(requestDto.getTitle(), requestDto.getContent()
 
-                .build()
-        );
-        */
+    @Transactional
+    public List<BoardResponseDto> getBoardByWriter(String writer) {
+        List<Board> boards = boardRepository.findByWriter(writer);
+        List<BoardResponseDto> boardResponseDtos = new ArrayList<>();
 
-//    public Boolean save () {
-//        boardRepository.save(requestDto.getTitle(), requestDto.getContent()
-//                .build);
-//
-//        return true;
-//    }
+        for (var board : boards) {
+            boardResponseDtos.add(
+                    BoardResponseDto.builder()
+                            .id(board.getId())
+                            .writer(board.getWriter())
+                            .title(board.getTitle())
+                            .content(board.getContent())
+                            .createdDate(board.getCreatedDate())
+                            .modifiedDate(board.getModifiedDate())
+                            .build()
+            );
+        }
+
+        return boardResponseDtos;
+    }
+
+    @Transactional
+    public BoardResponseDto save (BoardRequestDto boardRequestDto) {
+        Board newBoard = Board.builder()
+                .id(boardRequestDto.getId())
+                .writer(boardRequestDto.getWriter())
+                .title(boardRequestDto.getTitle())
+                .content(boardRequestDto.getContent())
+                .createdDate(boardRequestDto.getCreatedDate())
+                .modifiedDate(boardRequestDto.getModifiedDate())
+                .build();
+
+        Board board = boardRepository.save(newBoard);
+
+        return BoardResponseDto.builder()
+                .id(board.getId())
+                .writer(board.getWriter())
+                .title(board.getTitle())
+                .content(board.getContent())
+                .createdDate(board.getCreatedDate())
+                .modifiedDate(board.getModifiedDate())
+                .build();
+    }
 }
