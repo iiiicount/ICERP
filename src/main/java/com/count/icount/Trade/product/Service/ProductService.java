@@ -1,8 +1,8 @@
-package com.count.icount.trade.product.Service;
+package com.count.icount.Trade.product.Service;
 
-import com.count.icount.trade.product.Model.Dto.ProductDto;
-import com.count.icount.trade.product.Model.Entity.Product;
-import com.count.icount.trade.product.Repository.ProductRepository;
+import com.count.icount.Trade.product.Model.Dto.ProductDto;
+import com.count.icount.Trade.product.Model.Entity.Product;
+import com.count.icount.Trade.product.Repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
