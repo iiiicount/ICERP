@@ -1,17 +1,13 @@
 package com.count.icount.Trade.product.Model.Entity;
 
 import com.count.icount.Trade.product.Model.Dto.ProductDto;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.sql.Timestamp;
 
 @Entity
 @Getter
-@Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,15 +15,24 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column
     private String name;
+    @Column
     private String standard;
+    @Column
     private String unit;
-    private char taxation;
+    @Column
+    private char taxation = 'Y';
+    @Column
     private float purchasePrice;
+    @Column
     private float sellPrice;
-    private char status;
+    @Column
+    private char status = 'Y';
+    @Column
     private String memo;
-    private Timestamp enrollDate;
+    @Column
+    private Timestamp enrollDate = new Timestamp(System.currentTimeMillis());
 
     public static Product of(ProductDto productDto){
         return Product.builder()
