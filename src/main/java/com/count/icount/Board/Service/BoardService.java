@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -85,4 +86,34 @@ public class BoardService {
                 .modifiedDate(board.getModifiedDate())
                 .build();
     }
+
+    @Transactional
+    public BoardResponseDto delete (long id) {
+        Board newBoard = boardRepository.findById(id);
+
+        boardRepository.delete(newBoard);
+
+        return BoardResponseDto
+                .builder()
+                .id(newBoard.getId())
+                .writer(newBoard.getWriter())
+                .title(newBoard.getTitle())
+                .content(newBoard.getContent())
+                .createdDate(newBoard.getCreatedDate())
+                .modifiedDate(newBoard.getModifiedDate())
+                .build();
+    }
+
+//    @Transactional
+//    public BoardResponseDto updateContent (long id, String content) {
+//        Board newBoard = boardRepository.findById(id);
+//
+//        boardRepository.update(id);
+//    }
+//    @Transactional
+//    public BoardResponseDto updateTitle (long id, String title) {
+//        Board newBoard = boardRepository.findById(id);
+//
+//        boardRepository.update(id);
+//    }
 }
