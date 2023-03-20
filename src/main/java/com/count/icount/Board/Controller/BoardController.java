@@ -38,9 +38,15 @@ public class BoardController {
     public ResponseEntity<BoardResponseDto> deleteBoard (@PathVariable("id") long id) {
         return ResponseEntity.ok(boardService.delete(id));
     }
-    @PutMapping("")
-    public ResponseEntity<BoardResponseDto> updateBoard (@PathVariable("id") long id) {
-        return ResponseEntity.ok(boardService.update(id));
+
+    @PutMapping("/id/{id}")
+    public ResponseEntity<BoardResponseDto> modify (@PathVariable("id") long id, @RequestBody BoardRequestDto boardRequestDto) {
+        return ResponseEntity.ok(boardService.modify(id, boardRequestDto));
     }
+//
+//    @PutMapping("/content/id/{id}")
+//    public ResponseEntity<BoardResponseDto> updateBoardByContent (@PathVariable("id") long id, String content) {
+//        return ResponseEntity.ok(boardService.updateContent(id, content));
+//    }
 
 }

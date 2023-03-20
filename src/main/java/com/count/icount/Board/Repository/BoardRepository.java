@@ -15,5 +15,4 @@ public interface BoardRepository extends JpaRepository<Board, Long> {
     Board findById(long id);
     List<Board> findAll();
     List<Board> findByWriter(String writer);
-//    Board update(long id);
 }
