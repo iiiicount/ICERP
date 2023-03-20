@@ -33,14 +33,14 @@ public class BoardController {
         // log.info("Board save Controller : ");
         return ResponseEntity.ok(boardService.save(boardRequestDto));
     }
-//
-//    @DeleteMapping("")
-//    public ResponseEntity<BoardResponseDto> deleteBoard (BoardRequestDto boardRequestDto) {
-//        return ResponseEntity.ok(boardService.delete(boardRequestDto));
-//    }
-//    @PutMapping("")
-//    public ResponseEntity<BoardResponseDto> modifyBoard (BoardRequestDto boardRequestDto) {
-//        return ResponseEntity.ok(boardService.update(boardRequestDto));
-//    }
 
+    @DeleteMapping("/id/{id}")
+    public ResponseEntity<BoardResponseDto> deleteBoard (@PathVariable("id") long id) {
+        return ResponseEntity.ok(boardService.delete(id));
+    }
+
+    @PutMapping("/id/{id}")
+    public ResponseEntity<BoardResponseDto> modify (@PathVariable("id") long id, @RequestBody BoardRequestDto boardRequestDto) {
+        return ResponseEntity.ok(boardService.modify(id, boardRequestDto));
+    }
 }

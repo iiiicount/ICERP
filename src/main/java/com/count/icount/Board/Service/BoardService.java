@@ -10,9 +10,11 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -83,6 +85,53 @@ public class BoardService {
                 .content(board.getContent())
                 .createdDate(board.getCreatedDate())
                 .modifiedDate(board.getModifiedDate())
+                .build();
+    }
+
+    @Transactional
+    public BoardResponseDto delete (long id) {
+        Board newBoard = boardRepository.findById(id);
+
+        boardRepository.delete(newBoard);
+
+        return BoardResponseDto
+                .builder()
+                .id(newBoard.getId())
+                .writer(newBoard.getWriter())
+                .title(newBoard.getTitle())
+                .content(newBoard.getContent())
+                .createdDate(newBoard.getCreatedDate())
+                .modifiedDate(newBoard.getModifiedDate())
+                .build();
+    }
+
+    @Transactional
+    public BoardResponseDto modify (long id, BoardRequestDto boardRequestDto) {
+        Board board = boardRepository.findById(id);
+        boolean modified = false;
+
+        if (board.getTitle() != null) {
+            board.setTitle(boardRequestDto.getTitle());
+            modified = true;
+        }
+
+        if (board.getContent() != null) {
+            board.setContent(boardRequestDto.getContent());
+            modified = true;
+        }
+
+        if (modified == true) {
+            board.setModifiedDate(LocalDateTime.now());
+            boardRepository.save(board);
+        }
+
+        return BoardResponseDto.builder()
+                .id(board.getId())
+                .writer(board.getWriter())
+                .title(board.getTitle())
+                .content(board.getContent())
+                .modifiedDate(board.getModifiedDate())
+                .createdDate(board.getCreatedDate())
                 .build();
     }
 }
