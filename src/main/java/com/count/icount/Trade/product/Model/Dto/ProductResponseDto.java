@@ -10,7 +10,7 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 @Builder
 // enroll product request dto
-public class ProductDto {
+public class ProductResponseDto {
     private Long id;
     private String name;
     private String standard;
@@ -24,13 +24,6 @@ public class ProductDto {
 
 
     // ???
-    public static ProductDto of(Product product){
-        return ProductDto.builder()
-                .id(product.getId())
-                .name(product.getName())
-                .build();
-    }
-
     public Product toEntity() {
         return Product.builder()
                 .id(id)
@@ -43,6 +36,13 @@ public class ProductDto {
                 .status(status)
                 .memo(memo)
                 .enrollDate(enrollDate)
+                .build();
+    }
+
+    public static ProductResponseDto of(Product product){
+        return ProductResponseDto.builder()
+                .id(product.getId())
+                .name(product.getName())
                 .build();
     }
 }

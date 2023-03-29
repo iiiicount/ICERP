@@ -1,10 +1,11 @@
 package com.count.icount.Trade.product.Model.Dto;
 
-import com.count.icount.Trade.product.Model.Entity.Product;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.sql.Timestamp;
 
 @Data
 @NoArgsConstructor
@@ -13,10 +14,13 @@ import lombok.NoArgsConstructor;
 // ??
 public class ProductRequestDto {
     private Long id;
-
-    public Product toEntity() {
-        return Product.builder()
-                .id(id)
-                .build();
-    }
+    private String name;
+    private String standard;
+    private String unit;
+    private char taxation;
+    private float purchasePrice;
+    private float sellPrice;
+    private char status;
+    private String memo;
+    private Timestamp enrollDate;
 }
