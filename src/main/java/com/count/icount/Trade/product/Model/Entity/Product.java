@@ -1,6 +1,6 @@
 package com.count.icount.Trade.product.Model.Entity;
 
-import com.count.icount.Trade.product.Model.Dto.ProductDto;
+import com.count.icount.Trade.product.Model.Dto.ProductRequestDto;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -34,10 +34,18 @@ public class Product {
     @Column
     private Timestamp enrollDate = new Timestamp(System.currentTimeMillis());
 
-    public static Product of(ProductDto productDto){
+    public static Product of(ProductRequestDto product){
         return Product.builder()
-                .id(productDto.getId())
-                .name(productDto.getName())
+                .id(product.getId())
+                .name(product.getName())
+                .standard(product.getStandard())
+                .unit(product.getUnit())
+                .taxation(product.getTaxation())
+                .purchasePrice(product.getPurchasePrice())
+                .sellPrice(product.getSellPrice())
+                .status(product.getStatus())
+                .memo(product.getMemo())
+                .enrollDate(product.getEnrollDate())
                 .build();
     }
 }
