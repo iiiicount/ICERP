@@ -12,37 +12,19 @@ import java.sql.Timestamp;
 // enroll product request dto
 public class ProductResponseDto {
     private Long id;
+    private Long comCode;
+    private String code;
     private String name;
-    private String standard;
-    private String unit;
-    private char taxation;
-    private float purchasePrice;
-    private float sellPrice;
-    private char status;
-    private String memo;
-    private Timestamp enrollDate;
-
-
-    // ???
-    public Product toEntity() {
-        return Product.builder()
-                .id(id)
-                .name(name)
-                .standard(standard)
-                .unit(unit)
-                .taxation(taxation)
-                .purchasePrice(purchasePrice)
-                .sellPrice(sellPrice)
-                .status(status)
-                .memo(memo)
-                .enrollDate(enrollDate)
-                .build();
-    }
+    private Timestamp enrollDt;
+    private Timestamp updateDt;
 
     public static ProductResponseDto of(Product product){
         return ProductResponseDto.builder()
                 .id(product.getId())
+                .code(product.getCode())
                 .name(product.getName())
+                .enrollDt(product.getEnrollDt())
+                .updateDt(product.getUpdateDt())
                 .build();
     }
 }
