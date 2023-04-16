@@ -18,8 +18,12 @@ public class ProductController {
 
     @PostMapping
     public ResponseEntity<ProductResponseDto> saveProduct(@RequestBody ProductRequestDto product){
-        //System.out.printf("product = { name=%s, p_price=%s, s_price=%s }%n", product.getName(), product.getPurchasePrice(), product.getSellPrice());
-        return ResponseEntity.ok(productService.saveProduct(product));
+        if(product.getId() != null) {
+            return ResponseEntity.badRequest().build();
+        }
+
+        var result = productService.saveProduct(product);
+        return ResponseEntity.ok(result);
     }
 
 }

@@ -11,9 +11,10 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-// ??
 public class ProductRequestDto {
     private Long id;
+    private Long comCode;
+    private String code;
     private String name;
     private String standard;
     private String unit;
@@ -22,5 +23,6 @@ public class ProductRequestDto {
     private float sellPrice;
     private char status;
     private String memo;
-    private Timestamp enrollDate;
+    private Timestamp enrollDt;
+    private Timestamp updateDt;
 }
