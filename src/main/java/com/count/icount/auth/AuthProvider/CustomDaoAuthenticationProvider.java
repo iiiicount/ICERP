@@ -1,26 +1,21 @@
 package com.count.icount.auth.AuthProvider;
 
-import com.count.icount.auth.model.authentication.CustomAuthentication;
+import com.count.icount.auth.model.securityModels.AuthenticatedUser;
+import com.count.icount.auth.model.securityModels.CustomAuthentication;
 import com.count.icount.auth.service.CustomUserDetailService;
+import com.count.icount.company.Model.enums.UserType;
+import com.count.icount.exception.BlockedUserException;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.authentication.dao.AbstractUserDetailsAuthenticationProvider;
-import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.context.SecurityContext;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.util.Assert;
 
 @Getter
 @Setter
@@ -54,11 +49,16 @@ public class CustomDaoAuthenticationProvider extends AbstractUserDetailsAuthenti
         prepareTimingAttackProtection();
         CustomAuthentication auth = (CustomAuthentication) authentication;
         try {
-            UserDetails loadedUser = this.getUserDetailsService().loadUserByComCodeAndUsername(auth.getComCode(), username);
+            AuthenticatedUser loadedUser = (AuthenticatedUser) this.userDetailsService.loadUserByComCodeAndUsername(auth.getComCode(), username);
             if (loadedUser == null) {
                 throw new InternalAuthenticationServiceException(
                         "UserDetailsService returned null, which is an interface contract violation");
             }
+
+            if(loadedUser.getUserType() == UserType.BLOCKED){
+                throw new BlockedUserException("BLOCKED_USER!");
+            }
+
             return loadedUser;
         }
         catch (UsernameNotFoundException ex) {

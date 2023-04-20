@@ -3,21 +3,19 @@ package com.count.icount.auth.config;
 import com.count.icount.auth.AuthProvider.CustomDaoAuthenticationProvider;
 import com.count.icount.auth.filter.CustomSecurityFilter;
 import com.count.icount.auth.service.CustomUserDetailService;
+import com.count.icount.auth.service.handler.IcountAuthenticationSuccessHandler;
 import com.count.icount.config.CorsConfig;
 import lombok.RequiredArgsConstructor;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
@@ -30,6 +28,8 @@ public class SecurityConfig {
 
     private final CorsConfig corsConfig;
     private final CustomUserDetailService userDetailService;
+    private final IcountAuthenticationSuccessHandler authenticationSuccessHandler;
+
 
     @Bean
     public CorsConfigurationSource corsConfigurationSource(){
@@ -67,10 +67,11 @@ public class SecurityConfig {
 
     @Bean
     public CustomSecurityFilter authFilter(HttpSecurity http) throws Exception {
-        CustomSecurityFilter filter = new CustomSecurityFilter();
+        CustomSecurityFilter filter = new CustomSecurityFilter(authenticationSuccessHandler);
         filter.setAuthenticationManager(authenticationManager(http));
         return filter;
     }
+
 
     @Bean
     public SecurityFilterChain filterChain (HttpSecurity http)

@@ -17,7 +17,7 @@ import lombok.Setter;
 public class Company {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long comCode;
+    private String comCode;
     private String businessNumber;
     private String name;
     private String address;

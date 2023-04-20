@@ -21,4 +21,10 @@ public class Auth {
     private String userName;
     private String comCode;
     private String password;
+
+    public Auth(String name, String comCode, String password) {
+        this.userName = name;
+        this.comCode = comCode;
+        this.password = password;
+    }
 }

@@ -1,7 +1,6 @@
-package com.count.icount.auth.model.authentication;
+package com.count.icount.auth.model.securityModels;
 
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 
