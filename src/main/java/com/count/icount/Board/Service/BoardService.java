@@ -30,14 +30,15 @@ public class BoardService {
 
         for (var board : boards) {
             boardResponseDtos.add(
-                    BoardResponseDto.builder()
-                            .id(board.getId())
-                            .writer(board.getWriter())
-                            .title(board.getTitle())
-                            .content(board.getContent())
-                            .createdDate(board.getCreatedDate())
-                            .modifiedDate(board.getModifiedDate())
-                            .build()
+//                BoardResponseDto.builder()
+//                        .id(board.getId())
+//                        .writer(board.getWriter())
+//                        .title(board.getTitle())
+//                        .content(board.getContent())
+//                        .createdDate(board.getCreatedDate())
+//                        .modifiedDate(board.getModifiedDate())
+//                        .build()
+                    BoardResponseDto.of(board)
             );
         }
 
@@ -51,14 +52,15 @@ public class BoardService {
 
         for (var board : boards) {
             boardResponseDtos.add(
-                    BoardResponseDto.builder()
-                            .id(board.getId())
-                            .writer(board.getWriter())
-                            .title(board.getTitle())
-                            .content(board.getContent())
-                            .createdDate(board.getCreatedDate())
-                            .modifiedDate(board.getModifiedDate())
-                            .build()
+//                    BoardResponseDto.builder()
+//                            .id(board.getId())
+//                            .writer(board.getWriter())
+//                            .title(board.getTitle())
+//                            .content(board.getContent())
+//                            .createdDate(board.getCreatedDate())
+//                            .modifiedDate(board.getModifiedDate())
+//                            .build()
+                    BoardResponseDto.of(board)
             );
         }
 
@@ -67,25 +69,28 @@ public class BoardService {
 
     @Transactional
     public BoardResponseDto save (BoardRequestDto boardRequestDto) {
-        Board newBoard = Board.builder()
-                .id(boardRequestDto.getId())
-                .writer(boardRequestDto.getWriter())
-                .title(boardRequestDto.getTitle())
-                .content(boardRequestDto.getContent())
-                .createdDate(boardRequestDto.getCreatedDate())
-                .modifiedDate(boardRequestDto.getModifiedDate())
-                .build();
+//        Board newBoard = Board.builder()
+//                .id(boardRequestDto.getId())
+//                .writer(boardRequestDto.getWriter())
+//                .title(boardRequestDto.getTitle())
+//                .content(boardRequestDto.getContent())
+//                .createdDate(boardRequestDto.getCreatedDate())
+//                .modifiedDate(boardRequestDto.getModifiedDate())
+//                .build();
+
+        Board newBoard = Board.of(boardRequestDto);
 
         Board board = boardRepository.save(newBoard);
 
-        return BoardResponseDto.builder()
-                .id(board.getId())
-                .writer(board.getWriter())
-                .title(board.getTitle())
-                .content(board.getContent())
-                .createdDate(board.getCreatedDate())
-                .modifiedDate(board.getModifiedDate())
-                .build();
+//        return BoardResponseDto.builder()
+//                .id(board.getId())
+//                .writer(board.getWriter())
+//                .title(board.getTitle())
+//                .content(board.getContent())
+//                .createdDate(board.getCreatedDate())
+//                .modifiedDate(board.getModifiedDate())
+//                .build();
+        return BoardResponseDto.of(newBoard);
     }
 
     @Transactional
@@ -94,15 +99,16 @@ public class BoardService {
 
         boardRepository.delete(newBoard);
 
-        return BoardResponseDto
-                .builder()
-                .id(newBoard.getId())
-                .writer(newBoard.getWriter())
-                .title(newBoard.getTitle())
-                .content(newBoard.getContent())
-                .createdDate(newBoard.getCreatedDate())
-                .modifiedDate(newBoard.getModifiedDate())
-                .build();
+//        return BoardResponseDto
+//                .builder()
+//                .id(newBoard.getId())
+//                .writer(newBoard.getWriter())
+//                .title(newBoard.getTitle())
+//                .content(newBoard.getContent())
+//                .createdDate(newBoard.getCreatedDate())
+//                .modifiedDate(newBoard.getModifiedDate())
+//                .build();
+        return BoardResponseDto.of(newBoard);
     }
 
     @Transactional
@@ -125,13 +131,14 @@ public class BoardService {
             boardRepository.save(board);
         }
 
-        return BoardResponseDto.builder()
-                .id(board.getId())
-                .writer(board.getWriter())
-                .title(board.getTitle())
-                .content(board.getContent())
-                .modifiedDate(board.getModifiedDate())
-                .createdDate(board.getCreatedDate())
-                .build();
+//        return BoardResponseDto.builder()
+//                .id(board.getId())
+//                .writer(board.getWriter())
+//                .title(board.getTitle())
+//                .content(board.getContent())
+//                .modifiedDate(board.getModifiedDate())
+//                .createdDate(board.getCreatedDate())
+//                .build();
+        return BoardResponseDto.of(board);
     }
 }
