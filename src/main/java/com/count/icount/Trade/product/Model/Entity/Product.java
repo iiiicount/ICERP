@@ -1,6 +1,7 @@
 package com.count.icount.Trade.product.Model.Entity;
 
 import com.count.icount.Trade.product.Model.Dto.ProductRequestDto;
+import com.count.icount.company.Model.Entity.Company;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -17,15 +18,16 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false)
-    private Long comCode;
-    @Column(nullable = false)
+    @ManyToOne
+    @JoinColumn(name="comCode", nullable = false)
+    private Company company;
+    @Column(nullable = false, length = 20)
     private String code;
     @Column(nullable = false)
     private String name;
-    @Column
+    @Column(length = 100)
     private String standard;
-    @Column
+    @Column(length = 100)
     private String unit;
     @Column(columnDefinition = "char(1) default 'Y'")
     private char taxation;
@@ -35,7 +37,7 @@ public class Product {
     private float sellPrice;
     @Column(columnDefinition = "char(1) default 'Y'")
     private char status;
-    @Column
+    @Column(length = 500)
     private String memo;
     @CreationTimestamp
     @Column(updatable = false)
@@ -44,10 +46,10 @@ public class Product {
     @Column
     private Timestamp updateDt;
 
-    public static Product of(ProductRequestDto product){
+    public static Product of(ProductRequestDto product, Company company){
         return Product.builder()
                 .id(product.getId())
-                .comCode(product.getComCode())
+                .company(company)
                 .code(product.getCode())
                 .name(product.getName())
                 .standard(product.getStandard())
