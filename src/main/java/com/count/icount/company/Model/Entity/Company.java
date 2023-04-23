@@ -1,9 +1,6 @@
 package com.count.icount.company.Model.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,6 +13,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Company {
     @Id
+    @Column(name="com_code")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long comCode;
     private String businessNumber;
