@@ -1,5 +1,6 @@
 package com.count.icount.company.Model.enums;
 
+
 public enum UserType {
     MASTER("MASTER"),
     NORMAL("NORMAL"),
@@ -16,7 +17,17 @@ public enum UserType {
     }
 
     public static UserType getUserType(String value){
-        return UserType.valueOf(value.toUpperCase());
+        for(UserType userType : UserType.values()){
+            if(userType.hasUserType(value)){
+                return userType;
+            }
+        }
+
+        return null;
+    }
+
+    private boolean hasUserType(String type){
+        return this.userType.equals(type) || this.userType.equals(type.toUpperCase()) || this.userType.equals(type.toLowerCase());
     }
 
 }
