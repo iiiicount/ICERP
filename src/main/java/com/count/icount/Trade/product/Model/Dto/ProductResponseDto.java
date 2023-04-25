@@ -21,6 +21,7 @@ public class ProductResponseDto {
     public static ProductResponseDto of(Product product){
         return ProductResponseDto.builder()
                 .id(product.getId())
+                .comCode(product.getCompany().getComCode())
                 .code(product.getCode())
                 .name(product.getName())
                 .enrollDt(product.getEnrollDt())
