@@ -6,10 +6,10 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 
 @Getter
 @Setter
-public class CustomAuthentication extends UsernamePasswordAuthenticationToken{
+public class ICountAuthentication extends UsernamePasswordAuthenticationToken{
     private String comCode;
 
-    public CustomAuthentication(String comCode, Object principal, Object credentials){
+    public ICountAuthentication(String comCode, Object principal, Object credentials){
         super(principal, credentials);
         this.comCode = comCode;
     }

@@ -1,9 +1,10 @@
 package com.count.icount.auth.config;
 
-import com.count.icount.auth.AuthProvider.CustomDaoAuthenticationProvider;
-import com.count.icount.auth.filter.CustomSecurityFilter;
-import com.count.icount.auth.service.CustomUserDetailService;
-import com.count.icount.auth.service.handler.IcountAuthenticationSuccessHandler;
+import com.count.icount.auth.AuthProvider.ICountDaoAuthenticationProvider;
+import com.count.icount.auth.filter.ICountSecurityFilter;
+import com.count.icount.auth.service.ICountUserDetailService;
+import com.count.icount.auth.service.handler.ICountAuthenticationFailedHandler;
+import com.count.icount.auth.service.handler.ICountAuthenticationSuccessHandler;
 import com.count.icount.config.CorsConfig;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -15,7 +16,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
@@ -27,8 +27,9 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 public class SecurityConfig {
 
     private final CorsConfig corsConfig;
-    private final CustomUserDetailService userDetailService;
-    private final IcountAuthenticationSuccessHandler authenticationSuccessHandler;
+    private final ICountUserDetailService userDetailService;
+    private final ICountAuthenticationSuccessHandler authenticationSuccessHandler;
+    private final ICountAuthenticationFailedHandler authenticationFailedHandler;
 
 
     @Bean
@@ -52,8 +53,8 @@ public class SecurityConfig {
     }
 
     @Bean
-    public CustomDaoAuthenticationProvider customDaoAuthenticationProvider(){
-        return new CustomDaoAuthenticationProvider(userDetailService, passwordEncoder());
+    public ICountDaoAuthenticationProvider customDaoAuthenticationProvider(){
+        return new ICountDaoAuthenticationProvider(userDetailService, passwordEncoder());
     }
 
     @Bean
@@ -66,8 +67,8 @@ public class SecurityConfig {
     }
 
     @Bean
-    public CustomSecurityFilter authFilter(HttpSecurity http) throws Exception {
-        CustomSecurityFilter filter = new CustomSecurityFilter(authenticationSuccessHandler);
+    public ICountSecurityFilter authFilter(HttpSecurity http) throws Exception {
+        ICountSecurityFilter filter = new ICountSecurityFilter(authenticationSuccessHandler, authenticationFailedHandler);
         filter.setAuthenticationManager(authenticationManager(http));
         return filter;
     }

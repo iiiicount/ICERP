@@ -9,11 +9,11 @@ public class AuthenticationFailedException extends RuntimeException{
 
     public AuthenticationFailedException(){
         super();
-        this.errorCode = ErrorCode.USERNOTFOUND;
+        this.errorCode = ErrorCode.AUTHENTICATION_FAILED;
     }
 
     public AuthenticationFailedException(String errorMessage){
         super(errorMessage);
-        this.errorCode = ErrorCode.USERNOTFOUND;
+        this.errorCode = ErrorCode.AUTHENTICATION_FAILED;
     }
 }

@@ -1,19 +1,23 @@
 package com.count.icount.auth.filter;
 
-import com.count.icount.auth.model.securityModels.CustomAuthentication;
+import com.count.icount.auth.model.securityModels.ICountAuthentication;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-public class CustomSecurityFilter extends UsernamePasswordAuthenticationFilter {
+public class ICountSecurityFilter extends UsernamePasswordAuthenticationFilter {
     private static final String COM_CODE_KEY = "com_code";
 
-    public CustomSecurityFilter(AuthenticationSuccessHandler authenticationSuccessHandler){
+    public ICountSecurityFilter(
+            AuthenticationSuccessHandler authenticationSuccessHandler,
+            AuthenticationFailureHandler authenticationFailureHandler
+    ){
         super.setAuthenticationSuccessHandler(authenticationSuccessHandler);
+        super.setAuthenticationFailureHandler(authenticationFailureHandler);
     }
 
     protected String obtainComCode(HttpServletRequest request) {
@@ -22,13 +26,13 @@ public class CustomSecurityFilter extends UsernamePasswordAuthenticationFilter {
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)throws AuthenticationException {
-        CustomAuthentication authRequestInfo = getAuthRequestInfo(request);
+        ICountAuthentication authRequestInfo = getAuthRequestInfo(request);
 
         this.getAuthenticationManager().authenticate(authRequestInfo);
         return authRequestInfo;
     }
 
-    private CustomAuthentication getAuthRequestInfo(HttpServletRequest request){
+    private ICountAuthentication getAuthRequestInfo(HttpServletRequest request){
         String username = obtainUsername(request);
         username = (username != null) ? username : "";
         String password = obtainPassword(request);
@@ -36,7 +40,7 @@ public class CustomSecurityFilter extends UsernamePasswordAuthenticationFilter {
         String comCode = obtainComCode(request);
         comCode = (comCode != null) ? comCode : "";
 
-        return new CustomAuthentication(comCode, username, password);
+        return new ICountAuthentication(comCode, username, password);
     }
 
 

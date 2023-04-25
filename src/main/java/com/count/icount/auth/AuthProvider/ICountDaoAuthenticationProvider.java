@@ -1,8 +1,8 @@
 package com.count.icount.auth.AuthProvider;
 
 import com.count.icount.auth.model.securityModels.AuthenticatedUser;
-import com.count.icount.auth.model.securityModels.CustomAuthentication;
-import com.count.icount.auth.service.CustomUserDetailService;
+import com.count.icount.auth.model.securityModels.ICountAuthentication;
+import com.count.icount.auth.service.ICountUserDetailService;
 import com.count.icount.company.Model.enums.UserType;
 import com.count.icount.exception.BlockedUserException;
 import lombok.Getter;
@@ -20,8 +20,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Getter
 @Setter
 @RequiredArgsConstructor
-public class CustomDaoAuthenticationProvider extends AbstractUserDetailsAuthenticationProvider {
-    private final CustomUserDetailService userDetailsService;
+public class ICountDaoAuthenticationProvider extends AbstractUserDetailsAuthenticationProvider {
+    private final ICountUserDetailService userDetailsService;
     private volatile String userNotFoundEncodedPassword;
     private static final String USER_NOT_FOUND_PASSWORD = "userNotFoundPassword";
     private final PasswordEncoder passwordEncoder;
@@ -47,7 +47,7 @@ public class CustomDaoAuthenticationProvider extends AbstractUserDetailsAuthenti
     protected UserDetails retrieveUser(String username, UsernamePasswordAuthenticationToken authentication)
             throws AuthenticationException {
         prepareTimingAttackProtection();
-        CustomAuthentication auth = (CustomAuthentication) authentication;
+        ICountAuthentication auth = (ICountAuthentication) authentication;
         try {
             AuthenticatedUser loadedUser = (AuthenticatedUser) this.userDetailsService.loadUserByComCodeAndUsername(auth.getComCode(), username);
             if (loadedUser == null) {

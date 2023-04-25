@@ -1,8 +1,7 @@
 package com.count.icount.auth.service.handler;
 
-import com.count.icount.auth.model.securityModels.CustomAuthentication;
+import com.count.icount.auth.model.securityModels.ICountAuthentication;
 import com.count.icount.company.Model.Entity.User;
-import com.count.icount.company.Model.enums.UserType;
 import com.count.icount.company.service.UserService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -12,15 +11,13 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.WebAttributes;
 import org.springframework.security.web.authentication.AbstractAuthenticationTargetUrlRequestHandler;
-import org.springframework.security.web.context.SecurityContextPersistenceFilter;
-import org.springframework.security.web.context.SecurityContextRepository;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 
 @Component
 @RequiredArgsConstructor
-public class IcountAuthenticationSuccessHandler
+public class ICountAuthenticationSuccessHandler
         extends AbstractAuthenticationTargetUrlRequestHandler
         implements org.springframework.security.web.authentication.AuthenticationSuccessHandler {
     private final UserService userService;
@@ -33,7 +30,7 @@ public class IcountAuthenticationSuccessHandler
     * */
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
-        CustomAuthentication auth = (CustomAuthentication) authentication;
+        ICountAuthentication auth = (ICountAuthentication) authentication;
         User user = User.of(userService.getUserByComCodeAndNickName(auth.getComCode(), auth.getName()));
 
         clearAuthenticationAttributes(request);
