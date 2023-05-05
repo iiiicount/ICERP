@@ -14,6 +14,11 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * [TODO]
+ * - save시 세션에서 comcode꺼내서 controller에서부터 던지도록 변경
+ * - save시 Company 검증과정 개선
+ * */
 @Service
 @RequiredArgsConstructor
 public class ProductService {
@@ -26,6 +31,12 @@ public class ProductService {
         Product newProduct = Product.of(product, company);
 
         return ProductResponseDto.of(productRepository.save(newProduct));
+    }
+    @Transactional
+    public List<ProductResponseDto> saveProducts(List<ProductRequestDto> products) {
+        var company = validateCompany(products.get(0).getComCode());
+        var newProducts = Product.of(products, company);
+        return ProductResponseDto.of(productRepository.saveAll(newProducts));
     }
 
     @Transactional(readOnly = true)

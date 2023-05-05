@@ -4,6 +4,8 @@ import com.count.icount.Trade.product.Model.Entity.Product;
 import lombok.*;
 
 import java.sql.Timestamp;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Data
 @NoArgsConstructor
@@ -27,5 +29,11 @@ public class ProductResponseDto {
                 .enrollDt(product.getEnrollDt())
                 .updateDt(product.getUpdateDt())
                 .build();
+    }
+
+    public static List<ProductResponseDto> of(List<Product> products) {
+        return products.stream()
+                .map(p -> ProductResponseDto.of(p))
+                .collect(Collectors.toList());
     }
 }
