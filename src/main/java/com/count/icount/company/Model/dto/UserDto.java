@@ -31,7 +31,7 @@ public class UserDto {
                 .id(user.getId())
                 .comCode(user.getComCode())
                 .uid(user.getUid())
-                .nickname(user.getNickname())
+                .nickname(user.getUserName())
                 .userType(user.getUserType().getType())
                 .build();
     }

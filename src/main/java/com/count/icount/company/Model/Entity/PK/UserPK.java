@@ -11,5 +11,5 @@ import java.io.Serializable;
 @AllArgsConstructor
 public class UserPK implements Serializable {
     private String comCode;
-    private String nickname;
+    private String userName;
 }

@@ -17,6 +17,9 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
+import org.springframework.security.web.context.RequestAttributeSecurityContextRepository;
+import org.springframework.security.web.context.SecurityContextRepository;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -48,6 +51,11 @@ public class SecurityConfig {
     }
 
     @Bean
+    public SecurityContextRepository securityContextRepository(){
+        return new HttpSessionSecurityContextRepository();
+    }
+
+    @Bean
     public PasswordEncoder passwordEncoder(){
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
@@ -68,7 +76,11 @@ public class SecurityConfig {
 
     @Bean
     public ICountSecurityFilter authFilter(HttpSecurity http) throws Exception {
-        ICountSecurityFilter filter = new ICountSecurityFilter(authenticationSuccessHandler, authenticationFailedHandler);
+        ICountSecurityFilter filter = new ICountSecurityFilter(
+                authenticationSuccessHandler,
+                authenticationFailedHandler,
+                securityContextRepository()
+        );
         filter.setAuthenticationManager(authenticationManager(http));
         return filter;
     }
@@ -79,6 +91,8 @@ public class SecurityConfig {
             throws Exception {
         http
                 .csrf().disable()
+                .securityContext(securityContext -> securityContext
+                        .securityContextRepository(securityContextRepository()))
                 .addFilterBefore(authFilter(http),
                         UsernamePasswordAuthenticationFilter.class)
                 .authorizeHttpRequests(config -> config

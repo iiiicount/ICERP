@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 @Repository
 public interface AuthRepository extends JpaRepository<Auth, Long> {
-    public Optional<Auth> findByComCodeAndAndUserName(String comCode, String userName);
+    public Optional<Auth> findByComCodeAndUserName(String comCode, String userName);
     public Optional<Auth> findByUserName(String username);
 }

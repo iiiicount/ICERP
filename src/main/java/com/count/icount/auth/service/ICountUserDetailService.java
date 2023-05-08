@@ -29,9 +29,9 @@ public class ICountUserDetailService implements UserDetailsService {
     }
 
     public UserDetails loadUserByComCodeAndUsername(String comCode, String username){
-        Auth auth = authRepository.findByComCodeAndAndUserName(comCode, username)
+        Auth auth = authRepository.findByComCodeAndUserName(comCode, username)
                 .orElseThrow(AuthenticationFailedException::new);
-        com.count.icount.company.Model.Entity.User user = userRepository.findByComCodeAndNickname(comCode, username)
+        com.count.icount.company.Model.Entity.User user = userRepository.findByComCodeAndUserName(comCode, username)
                 .orElseThrow(AuthenticationFailedException::new);
         return new AuthenticatedUser(
                 auth.getUserName(),

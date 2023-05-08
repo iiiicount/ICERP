@@ -9,5 +9,5 @@ import java.util.Optional;
 
 public interface UserRepository extends JpaRepository<User, UserPK> {
     Optional<User> findByComCodeAndUid(String comCode, String uid);
-    Optional<User> findByComCodeAndNickname(String comCode, String nickName);
+    Optional<User> findByComCodeAndUserName(String comCode, String nickName);
 }

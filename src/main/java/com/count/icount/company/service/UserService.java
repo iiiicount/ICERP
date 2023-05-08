@@ -21,7 +21,7 @@ public class UserService {
     }
 
     public UserDto getUserByComCodeAndNickName(String comCode, String nickname){
-        Optional<User> user = userRepository.findByComCodeAndNickname(comCode, nickname);
+        Optional<User> user = userRepository.findByComCodeAndUserName(comCode, nickname);
         return user.map(UserDto::Of).orElse(null);
     }
 

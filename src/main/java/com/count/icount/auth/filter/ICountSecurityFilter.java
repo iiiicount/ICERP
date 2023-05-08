@@ -8,6 +8,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.context.SecurityContextRepository;
 
 public class ICountSecurityFilter extends UsernamePasswordAuthenticationFilter {
     private static final String COM_CODE_KEY = "com_code";
@@ -18,6 +19,17 @@ public class ICountSecurityFilter extends UsernamePasswordAuthenticationFilter {
     ){
         super.setAuthenticationSuccessHandler(authenticationSuccessHandler);
         super.setAuthenticationFailureHandler(authenticationFailureHandler);
+    }
+
+    public ICountSecurityFilter(
+            AuthenticationSuccessHandler authenticationSuccessHandler,
+            AuthenticationFailureHandler authenticationFailureHandler,
+            SecurityContextRepository securityContextRepository
+
+            ){
+        super.setAuthenticationSuccessHandler(authenticationSuccessHandler);
+        super.setAuthenticationFailureHandler(authenticationFailureHandler);
+        super.setSecurityContextRepository(securityContextRepository);
     }
 
     protected String obtainComCode(HttpServletRequest request) {

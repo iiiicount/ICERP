@@ -20,7 +20,7 @@ public class User {
 
     private String uid;
     @Id
-    private String nickname;
+    private String userName;
 
     private UserType userType;
 
@@ -29,7 +29,7 @@ public class User {
                 .id(userDto.getId())
                 .uid(userDto.getUid())
                 .comCode(userDto.getComCode())
-                .nickname(userDto.getNickname())
+                .userName(userDto.getNickname())
                 .userType(UserType.getUserType(userDto.getUserType()))
                 .build();
     }
