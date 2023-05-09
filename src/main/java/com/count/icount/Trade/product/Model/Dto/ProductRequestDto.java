@@ -13,7 +13,7 @@ import java.sql.Timestamp;
 @Builder
 public class ProductRequestDto {
     private Long id;
-    private Long comCode;
+    private String comCode;
     private String code;
     private String name;
     private String standard;

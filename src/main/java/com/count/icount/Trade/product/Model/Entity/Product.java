@@ -22,7 +22,7 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
-    @JoinColumn(name="comCode", nullable = false)
+    @JoinColumn(name="com_code", nullable = false)
     private Company company;
     @Column(nullable = false, length = 20)
     private String code;

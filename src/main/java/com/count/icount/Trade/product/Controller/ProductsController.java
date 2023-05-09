@@ -28,7 +28,7 @@ public class ProductsController {
     }
 
     @GetMapping("/com-code/{comCode}")
-    public ResponseEntity<List<GetProductResponseDto>> getCompanyProducts(@PathVariable("comCode") Long comCode,
+    public ResponseEntity<List<GetProductResponseDto>> getCompanyProducts(@PathVariable("comCode") String comCode,
                                                                    @PageableDefault(size = 20, sort = {"enrollDt"}, direction = Sort.Direction.DESC) Pageable page) {
         var result = productService.getProducts(comCode, page);
         return ResponseEntity.ok(result);

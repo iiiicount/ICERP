@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 // enroll product request dto
 public class ProductResponseDto {
     private Long id;
-    private Long comCode;
+    private String comCode;
     private String code;
     private String name;
     private Timestamp enrollDt;
