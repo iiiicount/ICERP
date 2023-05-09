@@ -17,8 +17,8 @@ public class ProductController {
 
 
     @PostMapping
-    public ResponseEntity<ProductResponseDto> saveProduct(@RequestBody ProductRequestDto product){
-        if(product.getId() != null) {
+    public ResponseEntity<ProductResponseDto> saveProduct(@RequestBody ProductRequestDto product) {
+        if (product.getId() != null) {
             return ResponseEntity.badRequest().build();
         }
 

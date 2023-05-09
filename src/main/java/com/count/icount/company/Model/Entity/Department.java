@@ -1,5 +1,6 @@
 package com.count.icount.company.Model.Entity;
 
+import com.count.icount.company.Model.enums.UserType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,4 +21,5 @@ public class Department {
     private Long comCode;
 
     private String departmentName;
+
 }
