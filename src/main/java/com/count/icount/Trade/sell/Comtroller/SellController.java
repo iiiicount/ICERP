@@ -1,8 +1,10 @@
 package com.count.icount.Trade.sell.Comtroller;
 
+import com.count.icount.Trade.sell.Dto.SellListResponseDto;
 import com.count.icount.Trade.sell.Dto.SellRequestDto;
 import com.count.icount.Trade.sell.Dto.SellResponseDto;
 import com.count.icount.Trade.sell.Service.SellService;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.ResponseEntity;
@@ -24,4 +26,15 @@ public class SellController {
     public ResponseEntity<SellResponseDto> getSell(@PathVariable("id") Long id)  {
         return ResponseEntity.ok(sellService.get(id));
     }
+
+    @GetMapping()
+    public ResponseEntity<SellListResponseDto> getAll() {
+        return ResponseEntity.ok(sellService.getAll());
+    }
+
+    @DeleteMapping("{id}")
+    public ResponseEntity<Long> delete(@PathVariable("id") Long id) {
+        return ResponseEntity.ok(sellService.delete(id));
+    }
+
 }
