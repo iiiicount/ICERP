@@ -40,7 +40,7 @@ public class ProductService {
     }
 
     @Transactional(readOnly = true)
-    public List<GetProductResponseDto> getProducts(long comCode, Pageable page) {
+    public List<GetProductResponseDto> getProducts(String comCode, Pageable page) {
         List<GetProductResponseDto> result = new ArrayList<>();
         var products = productRepository.findAllByCompany_ComCode(comCode, page);
 
@@ -53,7 +53,7 @@ public class ProductService {
         return result;
     }
 
-    private Company validateCompany(long comCode) {
+    private Company validateCompany(String comCode) {
         // 임시코드. 수정필요.
         Company company = new Company();
         company.setComCode(comCode);

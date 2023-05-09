@@ -15,7 +15,7 @@ import java.sql.Timestamp;
 // enroll product request dto
 public class GetProductResponseDto {
     private Long id;
-    private Long comCode;
+    private String comCode;
     private String code;
     private String name;
     private String standard;
