@@ -16,7 +16,16 @@ services:
       - --collation-server=utf8mb4_unicode_ci
     volumes:
       - icount-mysql-volume:/var/lib/mysql
+  redis-icount:
+    image: redis:7.0
+    container_name: redis-icount
+    ports:
+      - "26379:6379"
+    volumes:
+      - icount-redis-volume:/usr/local/etc/redis
 
 volumes:
   icount-mysql-volume:
+    driver: local
+  icount-redis-volume:
     driver: local

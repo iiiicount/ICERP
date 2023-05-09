@@ -1,4 +1,4 @@
-package com.count.icount.company.Model.Entity;
+package com.count.icount.auth.model.Entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,11 +14,17 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Hierarchy {
+public class Auth {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String userName;
     private String comCode;
-    private String hierarchyName;
+    private String password;
 
+    public Auth(String name, String comCode, String password) {
+        this.userName = name;
+        this.comCode = comCode;
+        this.password = password;
+    }
 }

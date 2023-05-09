@@ -11,6 +11,11 @@ spring:
     username: icountdev
     password: 1q2w3e4r
 
+  data:
+    redis:
+      port: 26379
+      host: 127.0.0.1
+
 logging:
   level:
     root: debug

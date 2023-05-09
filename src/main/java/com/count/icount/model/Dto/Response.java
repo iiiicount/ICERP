@@ -9,7 +9,6 @@ public class Response<T> {
     private Integer statusCode;
     private String httpMessage;
     private String errorMessage;
-    private String callBack;
     private T data;
 
     public Response(HttpStatus httpStatus, T data){
