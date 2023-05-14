@@ -16,7 +16,6 @@ import java.util.List;
 
 /**
  * [TODO]
- * - save시 세션에서 comcode꺼내서 controller에서부터 던지도록 변경
  * - save시 Company 검증과정 개선
  * */
 @Service
@@ -26,15 +25,14 @@ public class ProductService {
     private final ProductRepository productRepository;
 
     @Transactional
-    public ProductResponseDto saveProduct(ProductRequestDto product){
-        var company = validateCompany(product.getComCode());
+    public ProductResponseDto saveProduct(String comCode, ProductRequestDto product){
+        var company = validateCompany(comCode);
         Product newProduct = Product.of(product, company);
-
         return ProductResponseDto.of(productRepository.save(newProduct));
     }
     @Transactional
-    public List<ProductResponseDto> saveProducts(List<ProductRequestDto> products) {
-        var company = validateCompany(products.get(0).getComCode());
+    public List<ProductResponseDto> saveProducts(String comCode, List<ProductRequestDto> products) {
+        var company = validateCompany(comCode);
         var newProducts = Product.of(products, company);
         return ProductResponseDto.of(productRepository.saveAll(newProducts));
     }
