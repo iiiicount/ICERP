@@ -14,6 +14,7 @@ public class BoardRequestDto {
     private String writer;
     private String title;
     private String content;
+    private Boolean is_notice;
     private LocalDateTime createdDate;
     private LocalDateTime modifiedDate;
 
@@ -27,5 +28,17 @@ public class BoardRequestDto {
                 .modifiedDate(modifiedDate)
                 .build();
         return board;
+    }
+
+    public static BoardRequestDto of(Board board) {
+        return builder()
+                .id(board.getId())
+                .writer(board.getWriter())
+                .title(board.getTitle())
+                .content(board.getContent())
+                .is_notice(board.getIs_notice())
+                .createdDate(board.getCreatedDate())
+                .modifiedDate(board.getModifiedDate())
+                .build();
     }
 }
