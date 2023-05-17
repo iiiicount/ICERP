@@ -23,7 +23,7 @@ public class Board {
     private String writer;
     private String title;
     private String content;
-    private char is_notice;
+    private Boolean is_notice;
     private LocalDateTime createdDate;
     private LocalDateTime modifiedDate;
 

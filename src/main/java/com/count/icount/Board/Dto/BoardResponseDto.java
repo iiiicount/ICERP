@@ -14,7 +14,7 @@ public class BoardResponseDto {
     private String writer;
     private String title;
     private String content;
-    private char is_notice;
+    private Boolean is_notice;
     private LocalDateTime createdDate;
     private LocalDateTime modifiedDate;
 
@@ -30,18 +30,6 @@ public class BoardResponseDto {
                 .build();
         return board;
     }
-
-//    @Builder
-//    public BoardResponseDto(Long id, String writer, String title, String content,
-//                            LocalDateTime createdDate, LocalDateTime modifiedDate) {
-//        this.id = id;
-//        this.writer = writer;
-//        this.title = title;
-//        this.content = content;
-//        this.createdDate = createdDate;
-//        this.modifiedDate = modifiedDate;
-//    }
-
     public static BoardResponseDto of(Board board) {
         return builder()
                 .id(board.getId())
