@@ -5,6 +5,8 @@ import com.count.icount.Trade.product.Model.Dto.GetProductResponseDto;
 import com.count.icount.Trade.product.Model.Dto.ProductRequestDto;
 import com.count.icount.Trade.product.Model.Dto.ProductResponseDto;
 import com.count.icount.Trade.product.Service.ProductService;
+import com.count.icount.annotation.AuthInfo;
+import com.count.icount.annotation.AuthUserInfo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -22,15 +24,16 @@ public class ProductsController {
     private final ProductService productService;
 
     @PostMapping
-    public ResponseEntity<List<ProductResponseDto>> saveProducts(@RequestBody List<ProductRequestDto> products) {
-        var result = productService.saveProducts(products);
+    public ResponseEntity<List<ProductResponseDto>> saveProducts(@AuthInfo AuthUserInfo auth,
+                                                                 @RequestBody List<ProductRequestDto> products) {
+        var result = productService.saveProducts(auth.getComCode(), products);
         return ResponseEntity.ok(result);
     }
 
-    @GetMapping("/com-code/{comCode}")
-    public ResponseEntity<List<GetProductResponseDto>> getCompanyProducts(@PathVariable("comCode") String comCode,
-                                                                   @PageableDefault(size = 20, sort = {"enrollDt"}, direction = Sort.Direction.DESC) Pageable page) {
-        var result = productService.getProducts(comCode, page);
+    @GetMapping
+    public ResponseEntity<List<GetProductResponseDto>> getCompanyProducts(@AuthInfo AuthUserInfo auth,
+                                                                          @PageableDefault(size = 20, sort = {"enrollDt"}, direction = Sort.Direction.DESC) Pageable page) {
+        var result = productService.getProducts(auth.getComCode(), page);
         return ResponseEntity.ok(result);
     }
 
