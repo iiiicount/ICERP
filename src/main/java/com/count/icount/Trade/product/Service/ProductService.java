@@ -8,6 +8,7 @@ import com.count.icount.Trade.product.Repository.ProductRepository;
 import com.count.icount.company.Model.Entity.Company;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -48,6 +49,17 @@ public class ProductService {
                 result.add(response);
             }
         }
+        return result;
+    }
+
+    public ProductResponseDto deleteProduct(String comCode, Long id) {
+        var target = productRepository.findById(id);
+        if (target.isEmpty()) {
+            return null;
+        }
+
+        var result = ProductResponseDto.of(target.get());
+        productRepository.delete(target.get());
         return result;
     }
 

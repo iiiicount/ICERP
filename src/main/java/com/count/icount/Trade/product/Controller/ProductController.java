@@ -1,6 +1,5 @@
 package com.count.icount.Trade.product.Controller;
 
-
 import com.count.icount.Trade.product.Model.Dto.ProductRequestDto;
 import com.count.icount.Trade.product.Model.Dto.ProductResponseDto;
 import com.count.icount.Trade.product.Service.ProductService;
@@ -26,6 +25,16 @@ public class ProductController {
         }
 
         var result = productService.saveProduct(auth.getComCode(), product);
+        return ResponseEntity.ok(result);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<ProductResponseDto> deleteProduct(@AuthInfo AuthUserInfo auth,
+                                                            @PathVariable("id") Long id) {
+        var result = productService.deleteProduct(auth.getComCode(), id);
+        if(result == null) {
+            return ResponseEntity.badRequest().build();
+        }
         return ResponseEntity.ok(result);
     }
 

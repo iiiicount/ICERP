@@ -10,6 +10,5 @@ import java.util.Optional;
 
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
-    Optional<Product> findById(long id);
     List<Product> findAllByCompany_ComCode(String comCode, Pageable pageable);
 }
