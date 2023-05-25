@@ -45,8 +45,9 @@ public class Board {
                 .writer(boardRequestDto.getWriter())
                 .title(boardRequestDto.getTitle())
                 .content(boardRequestDto.getContent())
-                .createdDate(boardRequestDto.getCreatedDate())
-                .modifiedDate(boardRequestDto.getModifiedDate())
+                .is_notice(boardRequestDto.getIs_notice())
+                .createdDate(LocalDateTime.now())
+                .modifiedDate(LocalDateTime.now())
                 .build();
     }
 }

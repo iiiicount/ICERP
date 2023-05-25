@@ -18,18 +18,6 @@ public class BoardRequestDto {
     private LocalDateTime createdDate;
     private LocalDateTime modifiedDate;
 
-    public Board ToEntity() {
-        Board board = Board.builder()
-                .id(id)
-                .writer(writer)
-                .title(title)
-                .content(content)
-                .createdDate(createdDate)
-                .modifiedDate(modifiedDate)
-                .build();
-        return board;
-    }
-
     public static BoardRequestDto of(Board board) {
         return builder()
                 .id(board.getId())
