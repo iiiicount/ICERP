@@ -18,18 +18,6 @@ public class BoardResponseDto {
     private LocalDateTime createdDate;
     private LocalDateTime modifiedDate;
 
-    public Board ToEntity() {
-        Board board = Board.builder()
-                .id(id)
-                .writer(writer)
-                .title(title)
-                .content(content)
-                .is_notice(is_notice)
-                .createdDate(createdDate)
-                .modifiedDate(modifiedDate)
-                .build();
-        return board;
-    }
     public static BoardResponseDto of(Board board) {
         return builder()
                 .id(board.getId())
