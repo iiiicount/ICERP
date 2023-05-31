@@ -18,6 +18,7 @@ public class SellDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String comCode;
     private String product;
     private int quantity;
     private String beego;
