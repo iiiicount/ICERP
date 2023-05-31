@@ -2,6 +2,7 @@ package com.count.icount.exception.handler;
 
 import com.count.icount.exception.CExceptionExample;
 import com.count.icount.exception.CProductException;
+import com.count.icount.exception.CSellDetailNotFoundException;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,5 +24,12 @@ public class GlobalExceptionHandler {
         log.error("handleCProductException", ex);
         ErrorResponse response = new ErrorResponse(ex.getErrorCode());
         return new ResponseEntity<>(response, HttpStatus.valueOf(ex.getErrorCode().getStatus()));
+    }
+
+    @ExceptionHandler({CSellDetailNotFoundException.class})
+    public ResponseEntity<ErrorResponse> NotFountException(Exception e) {
+        ErrorResponse response = new ErrorResponse(ErrorCode.NOT_FOUND, e.getMessage());
+        return ResponseEntity.status(HttpStatus.valueOf(response.getStatus()))
+                .body(response);
     }
 }

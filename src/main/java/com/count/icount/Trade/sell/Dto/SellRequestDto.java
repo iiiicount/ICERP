@@ -15,4 +15,6 @@ public class SellRequestDto {
     private Long businessId;
     private String userName;
     private String detailCode;
+
+
 }

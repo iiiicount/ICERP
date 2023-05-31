@@ -13,4 +13,6 @@ import java.util.List;
 @Builder
 public class SellListResponseDto {
     private List<SellResponseDto> sellDto;
+
+
 }
