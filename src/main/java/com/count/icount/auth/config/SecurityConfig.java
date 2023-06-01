@@ -1,12 +1,13 @@
 package com.count.icount.auth.config;
 
 import com.count.icount.auth.AuthProvider.ICountDaoAuthenticationProvider;
-import com.count.icount.auth.filter.ICountSecurityFilter;
+import com.count.icount.auth.filter.ICountAuthenticationSecurityFilter;
 import com.count.icount.auth.service.ICountUserDetailService;
 import com.count.icount.auth.service.handler.ICountAuthenticationFailedHandler;
 import com.count.icount.auth.service.handler.ICountAuthenticationSuccessHandler;
 import com.count.icount.config.CorsConfig;
 import lombok.RequiredArgsConstructor;
+import lombok.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -18,7 +19,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
-import org.springframework.security.web.context.RequestAttributeSecurityContextRepository;
 import org.springframework.security.web.context.SecurityContextRepository;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
@@ -75,8 +75,8 @@ public class SecurityConfig {
     }
 
     @Bean
-    public ICountSecurityFilter authFilter(HttpSecurity http) throws Exception {
-        ICountSecurityFilter filter = new ICountSecurityFilter(
+    public ICountAuthenticationSecurityFilter authFilter(HttpSecurity http) throws Exception {
+        ICountAuthenticationSecurityFilter filter = new ICountAuthenticationSecurityFilter(
                 authenticationSuccessHandler,
                 authenticationFailedHandler,
                 securityContextRepository()
@@ -90,6 +90,7 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain (HttpSecurity http)
             throws Exception {
         http
+                .cors().configurationSource(corsConfigurationSource()).and()
                 .csrf().disable()
                 .securityContext(securityContext -> securityContext
                         .securityContextRepository(securityContextRepository()))

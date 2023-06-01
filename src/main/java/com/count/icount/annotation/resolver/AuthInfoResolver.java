@@ -3,6 +3,8 @@ package com.count.icount.annotation.resolver;
 import com.count.icount.annotation.AuthInfo;
 import com.count.icount.annotation.AuthUserInfo;
 import com.count.icount.auth.model.securityModels.ICountAuthentication;
+import com.count.icount.company.Model.Entity.User;
+import com.count.icount.company.repository.UserRepository;
 import com.count.icount.exception.AuthenticationFailedException;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +21,7 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 @RequiredArgsConstructor
 public class AuthInfoResolver implements HandlerMethodArgumentResolver {
     private final SecurityContextRepository securityContextRepository;
+    private final UserRepository userRepository;
 
     @Override
     public boolean supportsParameter(MethodParameter parameter) {
@@ -36,7 +39,12 @@ public class AuthInfoResolver implements HandlerMethodArgumentResolver {
 
         ICountAuthentication authentication = (ICountAuthentication) securityContextRepository.loadDeferredContext(request).get().getAuthentication();
 
-        // 유효한 유저인지 체크하는 로직;
+        String comCode = authentication.getComCode();
+        String username = authentication.getName();
+
+        User user = userRepository.findByComCodeAndUserName(comCode, username).orElseThrow(AuthenticationFailedException::new);
+
+        // 권한 체크 로직
 
         return AuthUserInfo.convertToUserInfo(authentication, request);
     }

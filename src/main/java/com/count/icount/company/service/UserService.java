@@ -30,4 +30,9 @@ public class UserService {
         return UserDto.Of(userRepository.save(newUser));
     }
 
+    public boolean checkNickname(String comCode, String nickname){
+        User user = userRepository.findByComCodeAndUserName(comCode, nickname).orElse(null);
+        return user == null;
+    }
+
 }

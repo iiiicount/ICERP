@@ -10,10 +10,10 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.context.SecurityContextRepository;
 
-public class ICountSecurityFilter extends UsernamePasswordAuthenticationFilter {
+public class ICountAuthenticationSecurityFilter extends UsernamePasswordAuthenticationFilter {
     private static final String COM_CODE_KEY = "com_code";
 
-    public ICountSecurityFilter(
+    public ICountAuthenticationSecurityFilter(
             AuthenticationSuccessHandler authenticationSuccessHandler,
             AuthenticationFailureHandler authenticationFailureHandler
     ){
@@ -21,7 +21,7 @@ public class ICountSecurityFilter extends UsernamePasswordAuthenticationFilter {
         super.setAuthenticationFailureHandler(authenticationFailureHandler);
     }
 
-    public ICountSecurityFilter(
+    public ICountAuthenticationSecurityFilter(
             AuthenticationSuccessHandler authenticationSuccessHandler,
             AuthenticationFailureHandler authenticationFailureHandler,
             SecurityContextRepository securityContextRepository
