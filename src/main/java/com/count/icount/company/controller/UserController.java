@@ -4,6 +4,7 @@ import com.count.icount.annotation.AuthInfo;
 import com.count.icount.annotation.AuthUserInfo;
 import com.count.icount.auth.service.AuthService;
 import com.count.icount.company.Model.dto.AddUserRequestDto;
+import com.count.icount.company.Model.dto.CheckNicknameResponseDto;
 import com.count.icount.company.Model.dto.UserDto;
 import com.count.icount.company.service.UserService;
 import com.count.icount.model.Dto.Response;
@@ -37,6 +38,20 @@ public class UserController {
         return new ResponseEntity<>("com_code: " + authUserInfo.getComCode() + " user_name: " + authUserInfo.getUserName(), HttpStatus.OK);
     }
 
+    @GetMapping("check-nickname")
+    public ResponseEntity<?> checkNickname(
+            @AuthInfo AuthUserInfo authUserInfo,
+            @RequestParam(name = "nickname") String nickname){
+        boolean success = userService.checkNickname(authUserInfo.getComCode(), nickname);
+        return new ResponseEntity<>(
+                CheckNicknameResponseDto.builder()
+                        .comCode(authUserInfo.getComCode())
+                        .nickname(nickname)
+                        .success(success)
+                        .build(),
+                HttpStatus.OK
+        );
+    }
 
 
 }

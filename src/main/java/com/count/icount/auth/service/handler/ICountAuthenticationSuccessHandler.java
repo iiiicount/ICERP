@@ -37,7 +37,6 @@ public class ICountAuthenticationSuccessHandler
 
 
         clearAuthenticationAttributes(request);
-        //Cookie cookie = new Cookie();
         //this.getRedirectStrategy().sendRedirect(request, response, this.mainPageUrl);
     }
 
