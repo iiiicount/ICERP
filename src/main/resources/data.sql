@@ -5,3 +5,7 @@
 -- insert into company for test
 INSERT INTO company(com_code, name)
 VALUES ('00000', 'icount 관리자회사코드'), ('80000', 'icount'), ('30000', '멋진회사');
+
+-- insert into bank for test
+INSERT INTO bank(bank_name)
+VALUES ('신한은행_테스트'), ('우리은행_테스트'), ('국민은행_테스트'), ('카카오뱅크_테스트');

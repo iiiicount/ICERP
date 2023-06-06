@@ -1,5 +1,6 @@
 package com.count.icount.exception.handler;
 
+import com.count.icount.exception.CBusinessException;
 import com.count.icount.exception.CExceptionExample;
 import com.count.icount.exception.CProductException;
 import com.count.icount.exception.CSellDetailNotFoundException;
@@ -22,8 +23,8 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(CProductException.class)
     public ResponseEntity<ErrorResponse> handleCProductException(CProductException ex) {
         log.error("handleCProductException", ex);
-        ErrorResponse response = new ErrorResponse(ex.getErrorCode());
-        return new ResponseEntity<>(response, HttpStatus.valueOf(ex.getErrorCode().getStatus()));
+        ErrorResponse response = new ErrorResponse(ex.getErrorCode(), ex.getMessage());
+        return new ResponseEntity<>(response, HttpStatus.valueOf(response.getStatus()));
     }
 
     @ExceptionHandler({CSellDetailNotFoundException.class})
@@ -31,5 +32,12 @@ public class GlobalExceptionHandler {
         ErrorResponse response = new ErrorResponse(ErrorCode.NOT_FOUND, e.getMessage());
         return ResponseEntity.status(HttpStatus.valueOf(response.getStatus()))
                 .body(response);
+    }
+
+    @ExceptionHandler(CBusinessException.class)
+    public ResponseEntity<ErrorResponse> handleCBusinessException(CBusinessException ex) {
+        log.error("handleCBusinessException", ex);
+        ErrorResponse response = new ErrorResponse(ex.getErrorCode(), ex.getMessage());
+        return new ResponseEntity<>(response, HttpStatus.valueOf(response.getStatus()));
     }
 }
