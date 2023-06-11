@@ -4,13 +4,18 @@ import com.count.icount.Trade.bank.Model.Entity.Bank;
 import com.count.icount.Trade.bank.Repository.BankRepository;
 import com.count.icount.Trade.business.Model.Dto.BusinessRequestDto;
 import com.count.icount.Trade.business.Model.Dto.BusinessResponseDto;
+import com.count.icount.Trade.business.Model.Dto.GetBusinessResponseDto;
 import com.count.icount.Trade.business.Model.Entity.Business;
 import com.count.icount.Trade.business.Repository.BusinessRepository;
 import com.count.icount.company.Model.Entity.Company;
 import com.count.icount.exception.CBusinessException;
 import com.count.icount.exception.handler.ErrorCode;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -23,6 +28,19 @@ public class BusinessService {
         var bank = validateBank(business.getBankId());
         Business newBusiness = Business.of(business, company, bank);
         return BusinessResponseDto.of(businessRepository.save(newBusiness));
+    }
+
+    public List<GetBusinessResponseDto> getBusinesses(String comCode, Pageable page) {
+        List<GetBusinessResponseDto> result = new ArrayList<>();
+        var businesses = businessRepository.findAllByCompany_ComCode(comCode, page);
+
+        if(businesses.size() > 0) {
+            for(var business : businesses) {
+                var response = GetBusinessResponseDto.of(business);
+                result.add(response);
+            }
+        }
+        return result;
     }
 
     private Company validateCompany(String comCode) {
