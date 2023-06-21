@@ -11,9 +11,10 @@ import org.springframework.stereotype.Service;
 public class CompanyService {
     private final CompanyRepository companyRepository;
 
-    public void SaveCompany(CompanyDto companyDto){
+    public CompanyDto saveCompany(CompanyDto companyDto){
 
-        companyRepository.save(Company.of(companyDto));
+        Company newCompany = companyRepository.save(Company.of(companyDto));
+        return CompanyDto.of(newCompany);
     }
 
 }
