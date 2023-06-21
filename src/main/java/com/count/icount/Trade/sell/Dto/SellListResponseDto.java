@@ -5,16 +5,14 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.util.List;
 
-@Data // getter setter등 다 있음
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class SellRequestDto {
-    private Long businessId;
-    private String userName;
-    private String detailCode;
+public class SellListResponseDto {
+    private List<SellResponseDto> sellDto;
 
 
 }

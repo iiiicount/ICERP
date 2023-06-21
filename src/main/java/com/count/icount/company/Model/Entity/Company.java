@@ -2,10 +2,13 @@ package com.count.icount.company.Model.Entity;
 
 import com.count.icount.company.Model.dto.CompanyDto;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.*;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Getter
@@ -15,7 +18,7 @@ import lombok.*;
 @NoArgsConstructor
 public class Company {
     @Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="com_code")
     private String comCode;
     private String businessNumber;
     private String name;
