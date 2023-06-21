@@ -1,4 +1,4 @@
-package com.count.icount.auth.service.handler;
+package com.count.icount.auth.component.authenticationHandlers;
 
 import com.count.icount.auth.model.securityModels.ICountAuthentication;
 import com.count.icount.company.Model.Entity.User;

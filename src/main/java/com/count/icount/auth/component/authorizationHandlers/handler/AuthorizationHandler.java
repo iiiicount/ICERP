@@ -1,7 +1,6 @@
-package com.count.icount.auth.component.authorizationHandler.handler;
+package com.count.icount.auth.component.authorizationHandlers.handler;
 
 import com.count.icount.company.Model.Entity.User;
-import com.count.icount.model.AuthUserInfo;
 import jakarta.servlet.http.HttpServletRequest;
 
 public interface AuthorizationHandler {

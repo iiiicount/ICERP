@@ -1,11 +1,10 @@
 package com.count.icount.annotation.resolver;
 
 import com.count.icount.annotation.AuthInfo;
-import com.count.icount.auth.component.authorizationHandler.AuthorizationHandlerFactory;
-import com.count.icount.auth.component.authorizationHandler.handler.AuthorizationHandler;
+import com.count.icount.auth.component.authorizationHandlers.AuthorizationHandlerFactory;
+import com.count.icount.auth.component.authorizationHandlers.handler.AuthorizationHandler;
 import com.count.icount.auth.model.enums.AuthorizationMode;
 import com.count.icount.model.AuthUserInfo;
-import com.count.icount.auth.model.securityModels.ICountAuthentication;
 import com.count.icount.company.Model.Entity.User;
 import com.count.icount.company.repository.UserRepository;
 import com.count.icount.exception.AuthenticationFailedException;
@@ -36,19 +35,18 @@ public class AuthInfoResolver implements HandlerMethodArgumentResolver {
 
     @Override
     public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer, NativeWebRequest webRequest, WebDataBinderFactory binderFactory) throws Exception {
-        HttpServletRequest request = (HttpServletRequest) webRequest.getNativeRequest();
 
         var annotation = Optional.ofNullable(parameter.getParameterAnnotation(AuthInfo.class))
                 .orElseThrow(AuthenticationFailedException::new);
-
         var authorizationMode = annotation.mode();
 
         if(authorizationMode == null){
             authorizationMode = AuthorizationMode.DEFAULT;
         }
 
-        AuthorizationHandler authHandler = this.authorizationHandlerFactory.createHandler(authorizationMode);
+        HttpServletRequest request = (HttpServletRequest) webRequest.getNativeRequest();
 
+        AuthorizationHandler authHandler = this.authorizationHandlerFactory.createHandler(authorizationMode);
         User user = authHandler.authorize(request);
 
         return AuthUserInfo.convertToUserInfo(user, request);

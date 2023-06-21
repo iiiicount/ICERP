@@ -21,7 +21,7 @@ public class CompanyController {
     private final CompanyService companyService;
     @PostMapping
     public ResponseEntity<?> addCompany(
-            @AuthInfo(mode = AuthorizationMode.ICOUNT_ONLY) AuthUserInfo userInfo,
+            @AuthInfo(mode = AuthorizationMode.ICOUNT_ONLY) AuthUserInfo userInfo, // icount 직원만 회사 등록 가능
             @RequestParam CompanyDto companyDto
     ){
         CompanyDto newCompanyDto = this.companyService.saveCompany(companyDto);
