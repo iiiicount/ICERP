@@ -1,9 +1,9 @@
-package com.count.icount.auth.component.authorizationHandler;
+package com.count.icount.auth.component.authorizationHandlers;
 
-import com.count.icount.auth.component.authorizationHandler.handler.AuthorizationHandler;
-import com.count.icount.auth.component.authorizationHandler.handler.DefaultAuthorizationHandler;
-import com.count.icount.auth.component.authorizationHandler.handler.ICountOnlyAuthorizationHandler;
-import com.count.icount.auth.component.authorizationHandler.handler.MasterOnlyAuthorizationHandler;
+import com.count.icount.auth.component.authorizationHandlers.handler.AuthorizationHandler;
+import com.count.icount.auth.component.authorizationHandlers.handler.DefaultAuthorizationHandler;
+import com.count.icount.auth.component.authorizationHandlers.handler.ICountOnlyAuthorizationHandler;
+import com.count.icount.auth.component.authorizationHandlers.handler.MasterOnlyAuthorizationHandler;
 import com.count.icount.auth.model.enums.AuthorizationMode;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;

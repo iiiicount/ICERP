@@ -1,4 +1,4 @@
-package com.count.icount.auth.component.authorizationHandler.handler;
+package com.count.icount.auth.component.authorizationHandlers.handler;
 
 import com.count.icount.company.Model.Entity.User;
 import com.count.icount.company.Model.enums.UserType;
@@ -9,21 +9,21 @@ import org.springframework.security.web.context.SecurityContextRepository;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ICountOnlyAuthorizationHandler extends DefaultAuthorizationHandler {
+public class MasterOnlyAuthorizationHandler extends DefaultAuthorizationHandler{
 
-    public ICountOnlyAuthorizationHandler(UserRepository userRepository, SecurityContextRepository securityContextRepository){
+    public MasterOnlyAuthorizationHandler(UserRepository userRepository, SecurityContextRepository securityContextRepository){
         super(userRepository, securityContextRepository);
     }
 
     @Override
     public User authorize(HttpServletRequest request){
         User user = super.authorize(request);
-        UserType userType = user.getUserType();
 
-        if(userType != UserType.ICOUNT && userType != UserType.ICOUNT_MASTER){
-            throw new AuthenticationFailedException("ICOUNT_ONLY");
+        if(user.getUserType() != UserType.MASTER){
+            throw new AuthenticationFailedException("MASTER_ONLY");
         }
 
         return user;
     }
+
 }

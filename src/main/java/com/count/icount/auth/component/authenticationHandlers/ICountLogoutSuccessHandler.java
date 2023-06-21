@@ -1,4 +1,4 @@
-package com.count.icount.auth.service.handler;
+package com.count.icount.auth.component.authenticationHandlers;
 
 import com.count.icount.auth.config.SecurityConfig;
 import jakarta.servlet.ServletException;

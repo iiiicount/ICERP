@@ -1,11 +1,10 @@
-package com.count.icount.auth.component.authorizationHandler.handler;
+package com.count.icount.auth.component.authorizationHandlers.handler;
 
 import com.count.icount.auth.model.securityModels.ICountAuthentication;
 import com.count.icount.company.Model.Entity.User;
 import com.count.icount.company.Model.enums.UserType;
 import com.count.icount.company.repository.UserRepository;
 import com.count.icount.exception.AuthenticationFailedException;
-import com.count.icount.model.AuthUserInfo;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.web.context.SecurityContextRepository;
@@ -17,6 +16,8 @@ public class DefaultAuthorizationHandler implements AuthorizationHandler{
     private final UserRepository userRepository;
     private final SecurityContextRepository securityContextRepository;
 
+
+    // region [Private Methods]
     private ICountAuthentication getAuthentication(HttpServletRequest request){
 
         if(!securityContextRepository.containsContext(request)){
@@ -33,6 +34,8 @@ public class DefaultAuthorizationHandler implements AuthorizationHandler{
         return userRepository.findByComCodeAndUserName(comCode, username)
                 .orElseThrow(AuthenticationFailedException::new);
     }
+
+    // endregion
 
     @Override
     public User authorize(HttpServletRequest request) {
