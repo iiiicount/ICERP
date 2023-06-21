@@ -1,6 +1,6 @@
-package com.count.icount.Trade.product.Repository;
+package com.count.icount.trade.product.Repository;
 
-import com.count.icount.Trade.product.Model.Entity.Product;
+import com.count.icount.trade.product.Model.Entity.Product;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

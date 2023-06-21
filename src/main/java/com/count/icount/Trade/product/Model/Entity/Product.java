@@ -1,6 +1,6 @@
-package com.count.icount.Trade.product.Model.Entity;
+package com.count.icount.trade.product.Model.Entity;
 
-import com.count.icount.Trade.product.Model.Dto.ProductRequestDto;
+import com.count.icount.trade.product.Model.Dto.ProductRequestDto;
 import com.count.icount.company.Model.Entity.Company;
 import com.count.icount.model.ICountChar;
 import jakarta.persistence.*;

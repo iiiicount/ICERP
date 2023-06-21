@@ -1,7 +1,7 @@
-package com.count.icount.Trade.business.Model.Entity;
+package com.count.icount.trade.business.Model.Entity;
 
-import com.count.icount.Trade.bank.Model.Entity.Bank;
-import com.count.icount.Trade.business.Model.Dto.BusinessRequestDto;
+import com.count.icount.trade.bank.Model.Entity.Bank;
+import com.count.icount.trade.business.Model.Dto.BusinessRequestDto;
 import com.count.icount.company.Model.Entity.Company;
 import jakarta.persistence.*;
 import lombok.*;

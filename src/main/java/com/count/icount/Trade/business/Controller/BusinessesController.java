@@ -1,9 +1,9 @@
-package com.count.icount.Trade.business.Controller;
+package com.count.icount.trade.business.Controller;
 
-import com.count.icount.Trade.business.Model.Dto.GetBusinessResponseDto;
+import com.count.icount.trade.business.Model.Dto.GetBusinessResponseDto;
 import com.count.icount.Trade.business.Service.BusinessService;
 import com.count.icount.annotation.AuthInfo;
-import com.count.icount.annotation.AuthUserInfo;
+import com.count.icount.model.AuthUserInfo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
