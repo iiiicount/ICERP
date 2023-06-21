@@ -6,7 +6,9 @@ import com.count.icount.company.repository.UserRepository;
 import com.count.icount.exception.AuthenticationFailedException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.security.web.context.SecurityContextRepository;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ICountOnlyAuthorizationHandler extends DefaultAuthorizationHandler {
 
     public ICountOnlyAuthorizationHandler(UserRepository userRepository, SecurityContextRepository securityContextRepository){
