@@ -16,8 +16,7 @@ spring:
     init:
       mode: always
       encoding: UTF-8
-  datasource:
-    sql-script-encoding: UTF-8
+
 
 cors:
   allowed-origins: '*'

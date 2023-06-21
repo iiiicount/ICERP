@@ -46,6 +46,7 @@ public class AuthInfoResolver implements HandlerMethodArgumentResolver {
 
         // 권한 체크 로직
 
+
         return AuthUserInfo.convertToUserInfo(authentication, request);
     }
 }

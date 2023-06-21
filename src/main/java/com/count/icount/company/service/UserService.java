@@ -4,9 +4,11 @@ package com.count.icount.company.service;
 import com.count.icount.company.Model.Entity.User;
 import com.count.icount.company.Model.dto.UserDto;
 import com.count.icount.company.repository.UserRepository;
+import com.count.icount.exception.AuthenticationFailedException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -14,6 +16,10 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class UserService {
     private final UserRepository userRepository;
+
+    private boolean checkDuplicatedUser(User user){
+        return userRepository.findByComCodeAndUserName(user.getComCode(), user.getUserName()).isPresent();
+    }
 
     public UserDto getUserById(String comCode, String Uid){
         Optional<User> user = userRepository.findByComCodeAndUid(comCode, Uid);
@@ -25,8 +31,14 @@ public class UserService {
         return user.map(UserDto::Of).orElse(null);
     }
 
+    @Transactional
     public UserDto saveUser(UserDto userInfo){
         User newUser = User.of((userInfo));
+
+        if(checkDuplicatedUser(newUser)){
+            throw new AuthenticationFailedException("user already exist");
+        }
+
         return UserDto.Of(userRepository.save(newUser));
     }
 
