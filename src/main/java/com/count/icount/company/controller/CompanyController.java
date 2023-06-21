@@ -1,8 +1,11 @@
 package com.count.icount.company.controller;
 
+import com.count.icount.annotation.AuthInfo;
+import com.count.icount.auth.model.enums.AuthorizationMode;
 import com.count.icount.company.Model.dto.AddCompanyResponseDto;
 import com.count.icount.company.Model.dto.CompanyDto;
 import com.count.icount.company.service.CompanyService;
+import com.count.icount.model.AuthUserInfo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,8 +20,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class CompanyController {
     private final CompanyService companyService;
     @PostMapping
-    public ResponseEntity<?> addCompany(@RequestParam CompanyDto companyDto){
-
+    public ResponseEntity<?> addCompany(
+            @AuthInfo(mode = AuthorizationMode.ICOUNT_ONLY) AuthUserInfo userInfo,
+            @RequestParam CompanyDto companyDto
+    ){
         CompanyDto newCompanyDto = this.companyService.saveCompany(companyDto);
 
         return new ResponseEntity<>(

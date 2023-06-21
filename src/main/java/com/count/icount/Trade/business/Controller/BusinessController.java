@@ -1,10 +1,10 @@
-package com.count.icount.Trade.business.Controller;
+package com.count.icount.trade.business.Controller;
 
 import com.count.icount.Trade.business.Model.Dto.BusinessRequestDto;
 import com.count.icount.Trade.business.Model.Dto.BusinessResponseDto;
 import com.count.icount.Trade.business.Service.BusinessService;
 import com.count.icount.annotation.AuthInfo;
-import com.count.icount.annotation.AuthUserInfo;
+import com.count.icount.model.AuthUserInfo;
 import com.count.icount.exception.CBusinessException;
 import com.count.icount.exception.handler.ErrorCode;
 import lombok.RequiredArgsConstructor;

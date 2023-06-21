@@ -3,17 +3,13 @@ package com.count.icount.Trade.sell.Comtroller;
 import com.count.icount.Trade.sell.Dto.SellDetailListResponseDto;
 import com.count.icount.Trade.sell.Dto.SellDetailRequestDto;
 import com.count.icount.Trade.sell.Dto.SellDetailResponseDto;
-import com.count.icount.Trade.sell.Dto.SellListResponseDto;
-import com.count.icount.Trade.sell.Repository.SellDetailRepository;
 import com.count.icount.Trade.sell.Service.SellDetailService;
 import com.count.icount.annotation.AuthInfo;
-import com.count.icount.annotation.AuthUserInfo;
+import com.count.icount.model.AuthUserInfo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/sellDetail")

@@ -1,8 +1,8 @@
-package com.count.icount.annotation;
+package com.count.icount.model;
 
 import com.count.icount.auth.model.securityModels.ICountAuthentication;
+import com.count.icount.company.Model.Entity.User;
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import lombok.*;
 
 @Getter
@@ -15,10 +15,10 @@ public class AuthUserInfo {
     private String userName;
     private String url;
 
-    public static AuthUserInfo convertToUserInfo(ICountAuthentication authentication, HttpServletRequest request){
+    public static AuthUserInfo convertToUserInfo(User user, HttpServletRequest request){
         return AuthUserInfo.builder()
-                .comCode(authentication.getComCode())
-                .userName(authentication.getName())
+                .comCode(user.getComCode())
+                .userName(user.getUserName())
                 .url(request.getRequestURI())
                 .build();
     }

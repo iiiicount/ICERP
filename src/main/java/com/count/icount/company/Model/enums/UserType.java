@@ -2,6 +2,8 @@ package com.count.icount.company.Model.enums;
 
 
 public enum UserType {
+    ICOUNT("ICOUNT"),
+    ICOUNT_MASTER("ICOUNT_MASTER"),
     MASTER("MASTER"),
     NORMAL("NORMAL"),
     BLOCKED("BLOCKED");

@@ -1,6 +1,6 @@
-package com.count.icount.Trade.product.Model.Dto;
+package com.count.icount.trade.product.Model.Dto;
 
-import com.count.icount.Trade.product.Model.Entity.Product;
+import com.count.icount.trade.product.Model.Entity.Product;
 import lombok.*;
 
 import java.sql.Timestamp;

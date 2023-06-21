@@ -1,13 +1,12 @@
 package com.count.icount.company.controller;
 
 import com.count.icount.annotation.AuthInfo;
-import com.count.icount.annotation.AuthUserInfo;
+import com.count.icount.model.AuthUserInfo;
 import com.count.icount.auth.service.AuthService;
 import com.count.icount.company.Model.dto.AddUserRequestDto;
 import com.count.icount.company.Model.dto.CheckNicknameResponseDto;
 import com.count.icount.company.Model.dto.UserDto;
 import com.count.icount.company.service.UserService;
-import com.count.icount.model.Dto.Response;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
