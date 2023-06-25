@@ -1,4 +1,4 @@
-package com.count.icount.trade.product.Model.Dto;
+package com.count.icount.Trade.product.Model.Dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

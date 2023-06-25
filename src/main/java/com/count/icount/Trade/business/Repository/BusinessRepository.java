@@ -1,6 +1,6 @@
-package com.count.icount.trade.business.Repository;
+package com.count.icount.Trade.business.Repository;
 
-import com.count.icount.trade.business.Model.Entity.Business;
+import com.count.icount.Trade.business.Model.Entity.Business;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
