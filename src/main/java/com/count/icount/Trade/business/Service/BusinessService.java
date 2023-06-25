@@ -1,12 +1,12 @@
-package com.count.icount.trade.business.Service;
+package com.count.icount.Trade.business.Service;
 
-import com.count.icount.trade.bank.Model.Entity.Bank;
-import com.count.icount.trade.bank.Repository.BankRepository;
-import com.count.icount.trade.business.Model.Dto.BusinessRequestDto;
-import com.count.icount.trade.business.Model.Dto.BusinessResponseDto;
-import com.count.icount.trade.business.Model.Dto.GetBusinessResponseDto;
-import com.count.icount.trade.business.Model.Entity.Business;
-import com.count.icount.trade.business.Repository.BusinessRepository;
+import com.count.icount.Trade.bank.Model.Entity.Bank;
+import com.count.icount.Trade.bank.Repository.BankRepository;
+import com.count.icount.Trade.business.Model.Dto.BusinessRequestDto;
+import com.count.icount.Trade.business.Model.Dto.BusinessResponseDto;
+import com.count.icount.Trade.business.Model.Dto.GetBusinessResponseDto;
+import com.count.icount.Trade.business.Model.Entity.Business;
+import com.count.icount.Trade.business.Repository.BusinessRepository;
 import com.count.icount.company.Model.Entity.Company;
 import com.count.icount.exception.CBusinessException;
 import com.count.icount.exception.handler.ErrorCode;
@@ -40,6 +40,16 @@ public class BusinessService {
                 result.add(response);
             }
         }
+        return result;
+    }
+
+    public BusinessResponseDto deleteBusiness(String comCode, Long id) {
+        var target = businessRepository.findById(id);
+        if(target.isEmpty()){
+            return null;
+        }
+        var result = BusinessResponseDto.of(target.get());
+        businessRepository.delete(target.get());
         return result;
     }
 

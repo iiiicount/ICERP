@@ -1,8 +1,6 @@
-package com.count.icount.trade.business.Model.Dto;
+package com.count.icount.Trade.business.Model.Dto;
 
-import com.count.icount.trade.business.Model.Entity.Business;
-import com.count.icount.trade.product.Model.Dto.ProductResponseDto;
-import com.count.icount.trade.product.Model.Entity.Product;
+import com.count.icount.Trade.business.Model.Entity.Business;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

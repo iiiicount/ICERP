@@ -1,10 +1,10 @@
-package com.count.icount.trade.product.Service;
+package com.count.icount.Trade.product.Service;
 
-import com.count.icount.trade.product.Model.Dto.ProductRequestDto;
-import com.count.icount.trade.product.Model.Dto.ProductResponseDto;
-import com.count.icount.trade.product.Model.Dto.GetProductResponseDto;
-import com.count.icount.trade.product.Model.Entity.Product;
-import com.count.icount.trade.product.Repository.ProductRepository;
+import com.count.icount.Trade.product.Model.Dto.ProductRequestDto;
+import com.count.icount.Trade.product.Model.Dto.ProductResponseDto;
+import com.count.icount.Trade.product.Model.Dto.GetProductResponseDto;
+import com.count.icount.Trade.product.Model.Entity.Product;
+import com.count.icount.Trade.product.Repository.ProductRepository;
 import com.count.icount.company.Model.Entity.Company;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
