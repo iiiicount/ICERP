@@ -2,6 +2,7 @@ package com.count.icount.Trade.business.Controller;
 
 import com.count.icount.Trade.business.Model.Dto.BusinessRequestDto;
 import com.count.icount.Trade.business.Model.Dto.BusinessResponseDto;
+import com.count.icount.Trade.business.Model.Dto.GetBusinessResponseDto;
 import com.count.icount.Trade.business.Service.BusinessService;
 import com.count.icount.annotation.AuthInfo;
 import com.count.icount.model.AuthUserInfo;
@@ -27,12 +28,27 @@ public class BusinessController {
         return ResponseEntity.ok(result);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<GetBusinessResponseDto> updateBusiness(@AuthInfo AuthUserInfo auth,
+                                                                 @PathVariable("id") Long id,
+                                                                 @RequestBody BusinessRequestDto business) {
+        if(business.getCode() == null || business.getName() == null) {
+            throw new CBusinessException("필수값이 누락되었습니다. (필수값: code, name)", ErrorCode.WRONG_DATA);
+        }
+
+        var result = businessService.updateBusiness(id, auth.getComCode(), business);
+        if(result == null) {
+            throw new CBusinessException("거래처정보를 수정할 수 없습니다.", ErrorCode.NOT_EXIST_TARGET);
+        }
+        return ResponseEntity.ok(result);
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<BusinessResponseDto> deleteBusiness(@AuthInfo AuthUserInfo auth,
                                                               @PathVariable("id") Long id) {
         var result = businessService.deleteBusiness(auth.getComCode(), id);
         if(result == null) {
-            throw  new CBusinessException("거래처정보를 삭제할 수 없습니다.", ErrorCode.NOT_EXIST_TARGET);
+            throw new CBusinessException("거래처정보를 삭제할 수 없습니다.", ErrorCode.NOT_EXIST_TARGET);
         }
         return ResponseEntity.ok(result);
     }

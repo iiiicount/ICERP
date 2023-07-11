@@ -53,6 +53,20 @@ public class BusinessService {
         return result;
     }
 
+    public GetBusinessResponseDto updateBusiness(Long id, String comCode, BusinessRequestDto business) {
+        var findResult = businessRepository.findById(id);
+        if(findResult.isEmpty()) {
+            return null;
+        }
+
+        business.setId(id);
+        var company = validateCompany(comCode);
+        var bank = validateBank(business.getBankId());
+        var target = Business.of(business, company, bank);
+        return GetBusinessResponseDto.of(businessRepository.save(target));
+    }
+
+
     private Company validateCompany(String comCode) {
         // 임시코드. 수정필요.
         Company company = new Company();
