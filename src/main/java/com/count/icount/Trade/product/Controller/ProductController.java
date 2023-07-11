@@ -35,6 +35,10 @@ public class ProductController {
     public ResponseEntity<GetProductResponseDto> updateProduct(@AuthInfo AuthUserInfo auth,
                                                                @PathVariable("id") Long id,
                                                                @RequestBody ProductRequestDto product) {
+        if(product.getCode() == null || product.getName() == null) {
+            throw new CProductException("필수값이 누락되었습니다. (필수값: code, name)", ErrorCode.WRONG_DATA);
+        }
+
         var result = productService.updateProduct(id, auth.getComCode(), product);
         if(result == null) {
             throw new CProductException("상품정보를 수정 할 수 없습니다.", ErrorCode.NOT_EXIST_TARGET);
