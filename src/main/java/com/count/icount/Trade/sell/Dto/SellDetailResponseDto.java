@@ -15,6 +15,8 @@ public class SellDetailResponseDto {
     private int quantity;
     private String beego;
 
+    private String userName;
+
     public static SellDetailResponseDto of(SellDetail sellDetail) {
         return builder()
                 .id(sellDetail.getId())
@@ -22,6 +24,7 @@ public class SellDetailResponseDto {
                 .sellId(sellDetail.getSellId())
                 .quantity(sellDetail.getQuantity())
                 .beego(sellDetail.getBeego())
+                .userName(sellDetail.getUserName())
                 .build();
     }
 }

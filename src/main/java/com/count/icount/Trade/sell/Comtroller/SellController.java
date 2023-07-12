@@ -1,9 +1,9 @@
 package com.count.icount.Trade.sell.Comtroller;
 
-import com.count.icount.Trade.sell.Dto.SellListResponseDto;
-import com.count.icount.Trade.sell.Dto.SellRequestDto;
-import com.count.icount.Trade.sell.Dto.SellResponseDto;
+import com.count.icount.Trade.sell.Dto.*;
 import com.count.icount.Trade.sell.Service.SellService;
+import com.count.icount.annotation.AuthInfo;
+import com.count.icount.model.AuthUserInfo;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -16,25 +16,28 @@ import org.springframework.web.bind.annotation.*;
 @Log4j2 // log 출력
 public class SellController {
     private final SellService sellService;
-    @PostMapping
-    public ResponseEntity<SellResponseDto> saveSell(@RequestBody SellRequestDto sellRequestDto)  {
-        log.info("user : " + sellRequestDto.getUserName());
-        return ResponseEntity.ok(sellService.save(sellRequestDto));
+    @PostMapping("")
+    public ResponseEntity<SellListResponseDto> save(@AuthInfo AuthUserInfo auth, @RequestBody SellListRequestDto sellListRequestDto) {
+        return ResponseEntity.ok(sellService.save(auth, sellListRequestDto));
+    }
+//
+//    @GetMapping("{id}")
+//    public ResponseEntity<SellResponseDto> getOne(@AuthInfo AuthUserInfo auth, @PathVariable("id") Long id) {
+//        return ResponseEntity.ok(sellService.getOne(auth, id));
+//    }
+
+    @GetMapping("")
+    public ResponseEntity<SellListResponseDto> getAll(@AuthInfo AuthUserInfo auth) {
+        return ResponseEntity.ok(sellService.getAll(auth));
     }
 
-    @GetMapping("{id}")
-    public ResponseEntity<SellResponseDto> getSell(@PathVariable("id") Long id)  {
-        return ResponseEntity.ok(sellService.get(id));
+    @DeleteMapping("id")
+    public ResponseEntity<Long> delete(@AuthInfo AuthUserInfo auth, @PathVariable("id") Long id) {
+        return ResponseEntity.ok(sellService.delete(auth, id));
     }
 
-    @GetMapping()
-    public ResponseEntity<SellListResponseDto> getAll() {
-        return ResponseEntity.ok(sellService.getAll());
+    @PutMapping("")
+    public ResponseEntity<Long> modify(@AuthInfo AuthUserInfo auth, @RequestBody SellListRequestDto sellListRequestDto) {
+        return ResponseEntity.ok(sellService.modify(auth, sellListRequestDto));
     }
-
-    @DeleteMapping("{id}")
-    public ResponseEntity<Long> delete(@PathVariable("id") Long id) {
-        return ResponseEntity.ok(sellService.delete(id));
-    }
-
 }

@@ -11,4 +11,6 @@ public class SellDetailRequestDto {
     private Long sellId;
     private int quantity;
     private String beego;
+
+    private String userName;
 }

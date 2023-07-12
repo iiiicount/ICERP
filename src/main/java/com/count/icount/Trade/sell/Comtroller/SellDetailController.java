@@ -1,5 +1,6 @@
 package com.count.icount.Trade.sell.Comtroller;
 
+import com.count.icount.Trade.sell.Dto.SellDetailListRequestDto;
 import com.count.icount.Trade.sell.Dto.SellDetailListResponseDto;
 import com.count.icount.Trade.sell.Dto.SellDetailRequestDto;
 import com.count.icount.Trade.sell.Dto.SellDetailResponseDto;
@@ -19,23 +20,28 @@ public class SellDetailController {
     private final SellDetailService sellDetailService;
 
     @PostMapping("")
-    public ResponseEntity<SellDetailResponseDto> save(@AuthInfo AuthUserInfo auth, @RequestBody SellDetailRequestDto sellDetailRequestDto) {
-        return ResponseEntity.ok(sellDetailService.save(sellDetailRequestDto));
+    public ResponseEntity<SellDetailListResponseDto> save(@AuthInfo AuthUserInfo auth, @RequestBody SellDetailListRequestDto sellDetailListRequestDto) {
+        return ResponseEntity.ok(sellDetailService.save(auth, sellDetailListRequestDto));
     }
 
-    @GetMapping("{id}")
-    public ResponseEntity<SellDetailResponseDto> getOne(@AuthInfo AuthUserInfo auth, @PathVariable("id") Long id) {
-        return ResponseEntity.ok(sellDetailService.getOne(id));
-    }
+//    @GetMapping("{id}")
+//    public ResponseEntity<SellDetailResponseDto> getOne(@AuthInfo AuthUserInfo auth, @PathVariable("id") Long id) {
+//        return ResponseEntity.ok(sellDetailService.getOne(auth, id));
+//    }
 
     @GetMapping("")
     public ResponseEntity<SellDetailListResponseDto> getAll(@AuthInfo AuthUserInfo auth) {
-        return ResponseEntity.ok(sellDetailService.getAll());
+        return ResponseEntity.ok(sellDetailService.getAll(auth));
     }
 
     @DeleteMapping("id")
     public ResponseEntity<Long> delete(@AuthInfo AuthUserInfo auth, @PathVariable("id") Long id) {
-        return ResponseEntity.ok(sellDetailService.delete(id));
+        return ResponseEntity.ok(sellDetailService.delete(auth, id));
+    }
+
+    @PutMapping("")
+    public ResponseEntity<Long> modify(@AuthInfo AuthUserInfo auth, @RequestBody SellDetailListRequestDto sellDetailListRequestDto) {
+        return ResponseEntity.ok(sellDetailService.modify(auth, sellDetailListRequestDto));
     }
 
 

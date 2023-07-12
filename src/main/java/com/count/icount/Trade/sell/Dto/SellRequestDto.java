@@ -12,9 +12,14 @@ import java.util.Date;
 @AllArgsConstructor
 @Builder
 public class SellRequestDto {
+    private Long id;
     private Long businessId;
     private String userName;
     private String detailCode;
+
+    private String comCode;
+
+    private Date date;
 
 
 }

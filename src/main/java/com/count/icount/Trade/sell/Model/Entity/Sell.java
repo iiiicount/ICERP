@@ -22,5 +22,15 @@ public class Sell {
     private String userName;
     private String detailCode;
 
+    private String comCode;
+
     private Date date;
+
+    public static Sell set(Sell sell1, Sell sell2) {
+        sell1.setBusinessId(sell2.getBusinessId());
+        sell1.setUserName(sell2.getUserName());
+        sell1.setDetailCode(sell2.getDetailCode());
+        sell1.setDate(sell2.getDate());
+        return sell1;
+    }
 }

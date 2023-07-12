@@ -12,10 +12,10 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class SellListResponseDto {
+public class SellListRequestDto {
     private List<Sell> sellDto;
 
-    public static SellListResponseDto of(List<Sell> sells) {
+    public static SellListRequestDto of(List<Sell> sells) {
         return builder().sellDto(sells).build();
     }
 }

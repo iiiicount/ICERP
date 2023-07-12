@@ -23,6 +23,17 @@ public class SellDetail {
     private int quantity;
     private String beego;
 
+    private String userName;
+
+    public static SellDetail set(SellDetail sell1, SellDetail sell2) {
+        sell1.setSellId(sell2.getSellId());
+        sell1.setUserName(sell2.getUserName());
+        sell1.setQuantity(sell2.getQuantity());
+        sell1.setBeego(sell2.getBeego());
+        sell1.setUserName(sell2.getUserName());
+        return sell1;
+    }
+
     public static SellDetail of(SellDetailRequestDto sellDetailRequestDto) {
         return builder()
                 .id(sellDetailRequestDto.getId())
@@ -30,6 +41,7 @@ public class SellDetail {
                 .sellId(sellDetailRequestDto.getSellId())
                 .quantity(sellDetailRequestDto.getQuantity())
                 .beego(sellDetailRequestDto.getBeego())
+                .userName(sellDetailRequestDto.getUserName())
                 .build();
     }
 
@@ -40,6 +52,7 @@ public class SellDetail {
                 .sellId(sellDetailResponseDto.getSellId())
                 .quantity(sellDetailResponseDto.getQuantity())
                 .beego(sellDetailResponseDto.getBeego())
+                .userName(sellDetailResponseDto.getUserName())
                 .build();
     }
 }
