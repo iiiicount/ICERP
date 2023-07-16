@@ -30,9 +30,9 @@ public class CompanyController {
                 AddCompanyResponseDto.builder()
                         .save(true)
                         .companyDto(newCompanyDto)
+                        .build()
                 , HttpStatus.OK
         );
     }
-
 
 }
