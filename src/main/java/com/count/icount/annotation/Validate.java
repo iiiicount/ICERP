@@ -1,11 +1,15 @@
 package com.count.icount.annotation;
 
+import com.count.icount.company.Model.dto.UserDto;
+
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
+import java.lang.reflect.Type;
 
-@Target(ElementType.PARAMETER)
+@Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Validate {
+    Class<?>[] a() default {};
 }

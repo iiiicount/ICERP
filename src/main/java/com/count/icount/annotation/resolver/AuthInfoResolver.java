@@ -23,8 +23,6 @@ import java.util.Optional;
 @Component
 @RequiredArgsConstructor
 public class AuthInfoResolver implements HandlerMethodArgumentResolver {
-    private final SecurityContextRepository securityContextRepository;
-    private final UserRepository userRepository;
     private final AuthorizationHandlerFactory authorizationHandlerFactory;
 
     @Override
