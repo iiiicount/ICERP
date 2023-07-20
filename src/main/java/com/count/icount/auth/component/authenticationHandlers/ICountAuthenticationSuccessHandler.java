@@ -49,6 +49,8 @@ public class ICountAuthenticationSuccessHandler
         clearAuthenticationAttributes(request);
 
         var loginResponse = new LoginResponseDto(true, null, "");
+
+        response.setContentType("application/json");
         mapper.writeValue(response.getWriter(), new ResponseEntity<>(loginResponse, HttpStatus.OK));
     }
     protected final void clearAuthenticationAttributes(HttpServletRequest request) {
