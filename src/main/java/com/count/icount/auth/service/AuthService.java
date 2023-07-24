@@ -1,6 +1,6 @@
 package com.count.icount.auth.service;
 
-import com.count.icount.auth.model.Entity.Auth;
+import com.count.icount.auth.model.entity.Auth;
 import com.count.icount.auth.repository.AuthRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;

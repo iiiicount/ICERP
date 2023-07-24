@@ -1,7 +1,6 @@
 package com.count.icount.model;
 
-import com.count.icount.auth.model.securityModels.ICountAuthentication;
-import com.count.icount.company.Model.Entity.User;
+import com.count.icount.company.model.entity.User;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.*;
 

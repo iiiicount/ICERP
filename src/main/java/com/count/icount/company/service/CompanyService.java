@@ -1,7 +1,7 @@
 package com.count.icount.company.service;
 
-import com.count.icount.company.Model.Entity.Company;
-import com.count.icount.company.Model.dto.CompanyDto;
+import com.count.icount.company.model.entity.Company;
+import com.count.icount.company.model.dto.CompanyDto;
 import com.count.icount.company.repository.CompanyRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

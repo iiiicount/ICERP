@@ -1,10 +1,10 @@
 package com.count.icount.auth.config;
 
-import com.count.icount.auth.AuthProvider.ICountDaoAuthenticationProvider;
+import com.count.icount.auth.authprovider.ICountDaoAuthenticationProvider;
 import com.count.icount.auth.filter.ICountAuthenticationSecurityFilter;
 import com.count.icount.auth.service.ICountUserDetailService;
-import com.count.icount.auth.component.authenticationHandlers.ICountAuthenticationFailedHandler;
-import com.count.icount.auth.component.authenticationHandlers.ICountAuthenticationSuccessHandler;
+import com.count.icount.auth.component.authenticationhandlers.ICountAuthenticationFailedHandler;
+import com.count.icount.auth.component.authenticationhandlers.ICountAuthenticationSuccessHandler;
 import com.count.icount.config.CorsConfig;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;

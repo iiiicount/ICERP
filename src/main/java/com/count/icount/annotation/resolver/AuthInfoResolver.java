@@ -1,17 +1,15 @@
 package com.count.icount.annotation.resolver;
 
 import com.count.icount.annotation.AuthInfo;
-import com.count.icount.auth.component.authorizationHandlers.AuthorizationHandlerFactory;
-import com.count.icount.auth.component.authorizationHandlers.handler.AuthorizationHandler;
+import com.count.icount.auth.component.authorizationhandlers.AuthorizationHandlerFactory;
+import com.count.icount.auth.component.authorizationhandlers.handler.AuthorizationHandler;
 import com.count.icount.auth.model.enums.AuthorizationMode;
 import com.count.icount.model.AuthUserInfo;
-import com.count.icount.company.Model.Entity.User;
-import com.count.icount.company.repository.UserRepository;
+import com.count.icount.company.model.entity.User;
 import com.count.icount.exception.AuthenticationFailedException;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.MethodParameter;
-import org.springframework.security.web.context.SecurityContextRepository;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.support.WebDataBinderFactory;
 import org.springframework.web.context.request.NativeWebRequest;

@@ -1,6 +1,6 @@
 package com.count.icount.auth.filter;
 
-import com.count.icount.auth.model.securityModels.ICountAuthentication;
+import com.count.icount.auth.model.securitymodels.ICountAuthentication;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.security.core.Authentication;
