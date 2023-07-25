@@ -1,4 +1,4 @@
-package com.count.icount.trade.sell.dto;
+package com.count.icount.trade.sell.model.dto;
 
 import com.count.icount.trade.sell.model.entity.Sell;
 import lombok.AllArgsConstructor;

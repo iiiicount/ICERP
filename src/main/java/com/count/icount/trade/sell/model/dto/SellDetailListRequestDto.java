@@ -1,4 +1,4 @@
-package com.count.icount.trade.sell.dto;
+package com.count.icount.trade.sell.model.dto;
 
 import com.count.icount.trade.sell.model.entity.SellDetail;
 import lombok.AllArgsConstructor;
@@ -12,10 +12,10 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class SellDetailListResponseDto {
+public class SellDetailListRequestDto {
     private List<SellDetail> sellDetails;
 
-    public static SellDetailListResponseDto of(List<SellDetail> list) {
+    public static SellDetailListRequestDto of(List<SellDetail> list) {
         return builder().sellDetails(list).build();
     }
 }

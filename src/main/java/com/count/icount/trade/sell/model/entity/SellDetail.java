@@ -1,7 +1,7 @@
 package com.count.icount.trade.sell.model.entity;
 
-import com.count.icount.trade.sell.dto.SellDetailRequestDto;
-import com.count.icount.trade.sell.dto.SellDetailResponseDto;
+import com.count.icount.trade.sell.model.dto.SellDetailRequestDto;
+import com.count.icount.trade.sell.model.dto.SellDetailResponseDto;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
