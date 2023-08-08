@@ -1,12 +1,11 @@
 package com.count.icount.company.service;
 
 
-import com.count.icount.company.Model.Entity.User;
-import com.count.icount.company.Model.dto.UserDto;
+import com.count.icount.company.model.entity.User;
+import com.count.icount.company.model.dto.UserDto;
 import com.count.icount.company.repository.UserRepository;
 import com.count.icount.exception.AuthenticationFailedException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

@@ -1,7 +1,7 @@
 package com.count.icount.auth.service;
 
-import com.count.icount.auth.model.Entity.Auth;
-import com.count.icount.auth.model.securityModels.AuthenticatedUser;
+import com.count.icount.auth.model.entity.Auth;
+import com.count.icount.auth.model.securitymodels.AuthenticatedUser;
 import com.count.icount.auth.repository.AuthRepository;
 import com.count.icount.company.repository.UserRepository;
 import com.count.icount.exception.AuthenticationFailedException;
@@ -31,7 +31,7 @@ public class ICountUserDetailService implements UserDetailsService {
     public UserDetails loadUserByComCodeAndUsername(String comCode, String username){
         Auth auth = authRepository.findByComCodeAndUserName(comCode, username)
                 .orElseThrow(AuthenticationFailedException::new);
-        com.count.icount.company.Model.Entity.User user = userRepository.findByComCodeAndUserName(comCode, username)
+        com.count.icount.company.model.entity.User user = userRepository.findByComCodeAndUserName(comCode, username)
                 .orElseThrow(AuthenticationFailedException::new);
         return new AuthenticatedUser(
                 auth.getUserName(),

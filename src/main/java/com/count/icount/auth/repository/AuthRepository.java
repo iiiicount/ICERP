@@ -1,8 +1,7 @@
 package com.count.icount.auth.repository;
 
-import com.count.icount.auth.model.Entity.Auth;
+import com.count.icount.auth.model.entity.Auth;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 public interface AuthRepository extends JpaRepository<Auth, Long> {

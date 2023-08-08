@@ -2,8 +2,8 @@ package com.count.icount.company.controller;
 
 import com.count.icount.annotation.AuthInfo;
 import com.count.icount.auth.model.enums.AuthorizationMode;
-import com.count.icount.company.Model.dto.AddCompanyResponseDto;
-import com.count.icount.company.Model.dto.CompanyDto;
+import com.count.icount.company.model.dto.AddCompanyResponseDto;
+import com.count.icount.company.model.dto.CompanyDto;
 import com.count.icount.company.service.CompanyService;
 import com.count.icount.model.AuthUserInfo;
 import lombok.RequiredArgsConstructor;
