@@ -2,6 +2,7 @@ package com.count.icount.board.model.entity;
 
 import com.count.icount.board.dto.BoardRequestDto;
 import com.count.icount.board.dto.BoardResponseDto;
+import com.count.icount.board.vo.BoardVo;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -27,15 +28,27 @@ public class Board {
     private LocalDateTime createdDate;
     private LocalDateTime modifiedDate;
 
-    public static Board of(BoardResponseDto boardResponseDto) {
+//    public static Board of(BoardResponseDto boardResponseDto) {
+//        return builder()
+//                .id(boardResponseDto.getId())
+//                .writer(boardResponseDto.getWriter())
+//                .title(boardResponseDto.getTitle())
+//                .content(boardResponseDto.getContent())
+//                .is_notice(boardResponseDto.getIs_notice())
+//                .createdDate(boardResponseDto.getCreatedDate())
+//                .modifiedDate(boardResponseDto.getModifiedDate())
+//                .build();
+//    }
+
+    public static Board of(BoardVo boardVo) {
         return builder()
-                .id(boardResponseDto.getId())
-                .writer(boardResponseDto.getWriter())
-                .title(boardResponseDto.getTitle())
-                .content(boardResponseDto.getContent())
-                .is_notice(boardResponseDto.getIs_notice())
-                .createdDate(boardResponseDto.getCreatedDate())
-                .modifiedDate(boardResponseDto.getModifiedDate())
+                .id(boardVo.getId())
+                .writer(boardVo.getWriter())
+                .title(boardVo.getTitle())
+                .content(boardVo.getContent())
+                .is_notice(boardVo.getIs_notice())
+                .createdDate(boardVo.getCreatedDate())
+                .modifiedDate(boardVo.getModifiedDate())
                 .build();
     }
 
