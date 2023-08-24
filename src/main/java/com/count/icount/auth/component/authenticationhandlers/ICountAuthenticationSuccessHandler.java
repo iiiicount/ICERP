@@ -39,14 +39,15 @@ public class ICountAuthenticationSuccessHandler
         ICountAuthentication auth = (ICountAuthentication) authentication;
         User user = User.of(userService.getUserByComCodeAndNickName(auth.getComCode(), auth.getName()));
 
-        String redirectUrl = this.mainPageUrl;
+        var loginResponse = new LoginResponseDto(true, null, "");
+
         if(user.getUserType() == UserType.BLOCKED){
-            redirectUrl = this.blockedUserPage;
+            loginResponse = new LoginResponseDto(false, "BLOCKED_USER", "BLOCKED_USER");
         }
 
         clearAuthenticationAttributes(request);
 
-        var loginResponse = new LoginResponseDto(true, null, "");
+        response.setContentType("application/json");
         mapper.writeValue(response.getWriter(), new ResponseEntity<>(loginResponse, HttpStatus.OK));
     }
     protected final void clearAuthenticationAttributes(HttpServletRequest request) {
